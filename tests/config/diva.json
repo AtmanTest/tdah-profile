@@ -2,14 +2,14 @@
   "id": "diva",
   "title": "DIVA 2.0",
   "fullName": "Diagnostic Interview for ADHD in Adults 2.0",
-  "description": "Entretien semi-structuré évaluant les 18 symptômes du TDAH (9 inattention + 9 hyperactivité/impulsivité) à l'âge adulte et dans l'enfance. Permet un diagnostic dimensionnel complet.",
+  "description": "Entretien semi-structuré évaluant les 18 symptômes du TDAH (9 inattention + 9 hyperactivité/impulsivité) à l'âge adulte et dans l'enfance. Le diagnostic repose sur les seuils par sous-échelle, pas sur le score total.",
   "type": "structured-interview",
   "reference": "Kooij JJS, Francken MH (2010). DIVA 2.0: Diagnostic Interview for ADHD in Adults.",
   "license": "Libre d'utilisation clinique (téléchargement gratuit sur divacenter.eu)",
   "durationMin": 25,
-  "questions": 44,
-  "duration": "25-40 min",
   "icon": "📋",
+  "questions": 42,
+  "duration": "25-40 min",
   "shortDesc": "Entretien diagnostique complet TDAH (adulte + enfance)",
   "sections": [
     { "id": "inattention-adulte", "title": "Inattention — Adulte", "instruction": "Ces symptômes doivent être présents depuis au moins six mois." },
@@ -57,11 +57,11 @@
     { "id": "diva-h9a", "section": "hyperactivity-adulte", "text": "H/I9 — Interrompt, impose sa présence", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
     { "id": "diva-h9e", "section": "hyperactivity-enfance", "text": "H/I9 (enfance) — Interrompt les autres", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
     { "id": "diva-b", "section": "critere-b", "text": "Critère B — Présence de quelques symptômes avant l'âge de 7 ans", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
-    { "id": "diva-c", "section": "critere-c", "text": "Critère C — Retentissement fonctionnel dans ≥ 2 domaines de la vie (travail, famille, social, temps libre, image de soi)", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
-    { "id": "diva-supp_i_a", "section": "critere-c", "text": "Supplément Inattention adulte : les symptômes limitent-ils significativement la vie quotidienne ?", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
-    { "id": "diva-supp_i_e", "section": "critere-c", "text": "Supplément Inattention enfance : les symptômes étaient-ils déjà présents et limitants ?", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
-    { "id": "diva-supp_h_a", "section": "critere-c", "text": "Supplément H/I adulte : les symptômes d'agitation limitent-ils la vie quotidienne ?", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
-    { "id": "diva-supp_h_e", "section": "critere-c", "text": "Supplément H/I enfance : les symptômes d'agitation étaient-ils déjà présents ?", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] }
+    { "id": "diva-c", "section": "critere-c", "text": "Critère C — Retentissement fonctionnel dans ≥ 2 domaines de la vie", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
+    { "id": "diva-supp_i_a", "section": "critere-c", "text": "Suppl. — Inattention adulte limitant la vie quotidienne ?", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
+    { "id": "diva-supp_i_e", "section": "critere-c", "text": "Suppl. — Inattention enfance déjà limitante ?", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
+    { "id": "diva-supp_h_a", "section": "critere-c", "text": "Suppl. — H/I adulte limitant la vie quotidienne ?", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] },
+    { "id": "diva-supp_h_e", "section": "critere-c", "text": "Suppl. — H/I enfance déjà présente ?", "options": [{ "label": "Non", "value": 0 }, { "label": "Oui", "value": 1 }] }
   ],
   "subscales": {
     "inattention-adulte": { "label": "Inattention — Adulte", "items": ["diva-a1a","diva-a2a","diva-a3a","diva-a4a","diva-a5a","diva-a6a","diva-a7a","diva-a8a","diva-a9a"] },
@@ -79,48 +79,43 @@
       { "id": "critere-c", "type": "item-value", "item": "diva-c", "operator": "gte", "threshold": 1, "description": "Critère C : retentissement fonctionnel ≥ 2 domaines" }
     ],
     "complexThreshold": {
-      "and": ["inattention-enfance-threshold", "inattention-adulte-threshold", "critere-b", "critere-c"],
-      "description": "Diagnostic TDAH si : Inattention adulte ≥ 6/9 ET enfance ≥ 6/9 ET critère B (avant 7 ans) ET critère C (retentissement)"
+      "and": ["inattention-adulte-threshold", "inattention-enfance-threshold", "critere-b", "critere-c"],
+      "description": "TDAH confirmé si : Inattention ≥ 6/9 adulte ET enfance + critères B et C"
     },
-    "divaDiagnosis": {
-      "description": "Diagnostic TDAH si : (Inattention ≥ 6/9 adulte OU enfant) ET (H/I ≥ 6/9 adulte OU enfant) ET retentissement ≥ 2 domaines",
-      "inattentionRequired": 6,
-      "hyperactivityRequired": 6,
-      "subtypes": {
-        "combiné": { "label": "Type combiné", "condition": "inattention + hyperactivité" },
-        "inattentif": { "label": "Type inattentif prédominant", "condition": "inattention seulement" },
-        "hyperactif": { "label": "Type hyperactif/impulsif prédominant", "condition": "hyperactivité seulement" }
-      }
+    "inattentiveOnly": {
+      "and": ["inattention-adulte-threshold", "inattention-enfance-threshold", "critere-b", "critere-c"],
+      "not": ["hyperactivity-adulte-threshold"],
+      "description": "Type inattentif prédominant : inattention uniquement (H/I < 6/9)"
     }
   },
   "interpretations": [
     {
       "level": "non-evocateur",
       "minScore": 0,
-      "maxScore": 30,
+      "maxScore": 13,
       "label": "Non évocateur d'un TDAH",
       "color": "#5b8b6a",
-      "text": "Les scores sont en dessous des seuils diagnostiques du TDAH.",
+      "text": "Les scores sont en dessous des seuils diagnostiques du TDAH. Peu de symptômes rapportés dans l'ensemble.",
       "recommendation": "Si des difficultés persistent, une évaluation plus large peut être utile."
     },
     {
       "level": "partiel",
-      "minScore": 30,
-      "maxScore": 60,
-      "label": "Symptômes partiels — évaluation complémentaire",
+      "minScore": 14,
+      "maxScore": 24,
+      "label": "Symptômes partiels — possible TDAH inattentif",
       "color": "#b8a042",
-      "text": "Certains domaines atteignent le seuil mais pas tous. Le diagnostic de TDAH peut être discuté selon la présentation clinique.",
-      "recommendation": "Un entretien avec un psychiatre spécialisé est recommandé."
+      "text": "Le score total est modéré mais le diagnostic repose sur les seuils par domaine. Un TDAH de type inattentif peut donner un score total bas (15-22) si l'hyperactivité est absente, tout en remplissant les critères inattention + B + C.",
+      "recommendation": "Vérifiez les seuils ci-dessous. Si Inattention ≥ 6/9 adulte ET enfance + B + C, le diagnostic est évocateur même avec un score total bas."
     },
     {
       "level": "evocateur",
-      "minScore": 60,
-      "maxScore": 72,
+      "minScore": 25,
+      "maxScore": 42,
       "label": "Évocateur d'un TDAH",
       "color": "#b85a42",
-      "text": "Les critères diagnostiques du TDAH sont remplis avec des symptômes présents dans l'enfance et persistants à l'âge adulte.",
+      "text": "Score total élevé. Les critères diagnostiques du TDAH sont probablement remplis.",
       "recommendation": "Consultez un psychiatre spécialisé pour confirmer le diagnostic et discuter des options thérapeutiques."
     }
   ],
-  "disclaimer": "La DIVA 2.0 est un entretien semi-structuré d'aide au diagnostic. Ce formulaire numérique est un outil de collecte des symptômes. Le diagnostic de TDAH nécessite un entretien clinique complet par un professionnel de santé qualifié, incluant l'évaluation du retentissement fonctionnel (critère C) et l'exclusion d'autres diagnostics (critère E)."
+  "disclaimer": "La DIVA 2.0 est un entretien semi-structuré d'aide au diagnostic. ATTENTION : le TDAH de type inattentif (sans hyperactivité) peut donner un score total de 15-22/42 tout en remplissant les critères diagnostiques. Ne vous fiez pas uniquement au score total — vérifiez les seuils par domaine ci-dessous. Le diagnostic de TDAH nécessite un entretien clinique complet par un professionnel de santé qualifié."
 }

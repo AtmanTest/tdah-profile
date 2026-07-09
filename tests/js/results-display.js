@@ -47,19 +47,29 @@
       `;
 
       // === SCORE PRINCIPAL ===
+      // Quand complexThreshold existe ET est passé, c'est le verdict qui prime
+      const useThresholdVerdict = result.complexPassed !== null;
+      const verdictLabel = useThresholdVerdict
+        ? (result.complexPassed ? 'Diagnostic évocateur' : 'Non évocateur')
+        : (interp.label || 'Résultat');
+      const verdictColor = useThresholdVerdict
+        ? (result.complexPassed ? '#b85a42' : '#5b8b6a')
+        : (interp.color || '#888');
+      
       html += `
-        <div class="tr-score-card" style="border-left:4px solid ${interp.color || '#888'}">
+        <div class="tr-score-card" style="border-left:4px solid ${verdictColor}">
           <div class="tr-score-main">
-            <div class="tr-score-number" style="color:${interp.color || '#888'}">
+            <div class="tr-score-number" style="color:${verdictColor}">
               ${result.raw}<span class="tr-score-max">/${result.max}</span>
             </div>
-            <div class="tr-score-label" style="color:${interp.color || '#888'}">
-              ${interp.label || 'Résultat'}
+            <div class="tr-score-label" style="color:${verdictColor}">
+              ${verdictLabel}
             </div>
+            ${useThresholdVerdict && result.complexPassed ? '<div class="tr-score-badge" style="background:' + verdictColor + ';color:#fff;font-size:.68rem;padding:.15rem .6rem;border-radius:10px;font-weight:500">Verdict combiné</div>' : ''}
           </div>
           <div class="tr-score-bar-wrap">
             <div class="tr-score-bar">
-              <div class="tr-score-fill" style="width:${result.percent}%;background:${interp.color || '#888'}"></div>
+              <div class="tr-score-fill" style="width:${result.percent}%;background:${verdictColor}"></div>
             </div>
             <div class="tr-score-percent">${result.percent}%</div>
           </div>
@@ -69,13 +79,28 @@
       // === SEUILS ===
       if (thresholds.length > 0) {
         html += '<div class="tr-section"><h3 class="tr-section-title">Seuils cliniques</h3>';
-        // Voir si test a un complexThreshold (MDQ)
+        // Voir si test a un complexThreshold (MDQ, DIVA)
         if (result.complexPassed !== null) {
+          const isPositive = result.complexPassed;
+          
+          // Détection sous-type DIVA (inattentif vs combiné)
+          let subtypeLabel = '';
+          if (config.id === 'diva' && isPositive) {
+            const hiAdultThreshold = thresholds.find(t => t.id === 'hyperactivity-adulte-threshold');
+            const hiChildThreshold = thresholds.find(t => t.id === 'hyperactivity-enfance-threshold');
+            const hiReached = (hiAdultThreshold?.reached && hiChildThreshold?.reached);
+            if (hiReached) {
+              subtypeLabel = ' — Type combiné (inattention + hyperactivité/impulsivité)';
+            } else {
+              subtypeLabel = ' — Type inattentif prédominant (hyperactivité absente ou sous le seuil)';
+            }
+          }
+          
           html += `
-            <div class="tr-threshold-card ${result.complexPassed ? 'tr-pass' : 'tr-fail'}">
-              <span class="tr-threshold-icon">${result.complexPassed ? '✓' : '✗'}</span>
+            <div class="tr-threshold-card ${isPositive ? 'tr-pass' : 'tr-fail'}">
+              <span class="tr-threshold-icon">${isPositive ? '✓' : '✗'}</span>
               <div>
-                <strong>Dépistage global : ${result.complexPassed ? 'POSITIF' : 'NÉGATIF'}</strong>
+                <strong>Diagnostic${isPositive ? (config.id === 'diva' ? ' TDAH' : '') : ''} : ${isPositive ? 'ÉVOCATEUR' : 'NON ÉVOCATEUR'}${subtypeLabel}</strong>
                 <div class="tr-threshold-desc">${config.scoring?.complexThreshold?.description || ''}</div>
               </div>
             </div>
