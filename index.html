@@ -56,7 +56,12 @@ nav .inner{
   padding:.6rem var(--sp);gap:.4rem;
   flex-wrap:wrap;
 }
-nav .logo{font-size:.8rem;font-weight:600;color:var(--accent);white-space:nowrap;padding-top:.1rem;flex-shrink:0}
+nav .logo{font-size:.9rem;font-weight:800;color:var(--accent);white-space:nowrap;padding-top:.1rem;flex-shrink:0;text-decoration:none;transition:opacity .2s}
+nav .logo:hover{opacity:.8;text-decoration:underline;text-underline-offset:3px}
+/* Nav active link — scroll spy */
+nav .links a.active{font-weight:700;color:var(--accent);position:relative}
+nav .links a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--accent);border-radius:2px;animation:pulseActive 1.5s ease-in-out infinite}
+@keyframes pulseActive{0%,100%{opacity:1}50%{opacity:.4}}
 nav .links{
   display:flex;flex-wrap:wrap;gap:.2rem;
   flex:1;
@@ -559,11 +564,14 @@ section[id]{scroll-margin-top:4rem}
    15. NEWS BANNER
    ============================================ */
 .news-banner{
-  background:linear-gradient(135deg,#1a2a4e,#2d4a75);
+  background:rgba(26,42,78,.55);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
   color:#fff;
-  padding:.45rem var(--sp);
+  padding:.5rem var(--sp);
   font-size:.78rem;
   overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.08);
   transition:opacity .3s,height .3s;
 }
 .news-banner.hidden{opacity:0;height:0;padding:0;overflow:hidden}
@@ -579,21 +587,23 @@ section[id]{scroll-margin-top:4rem}
   border:1px solid rgba(255,255,255,.08);
 }
 .news-banner-ticker{
-  flex:1;overflow:hidden;height:1.6rem;
-  position:relative;mask-image:linear-gradient(90deg,transparent 0,#000 3%,#000 97%,transparent 100%);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 3%,#000 97%,transparent 100%);
+  flex:1;overflow:hidden;height:2.6rem;
+  position:relative;mask-image:linear-gradient(90deg,transparent 0,#000 2%,#000 98%,transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 2%,#000 98%,transparent 100%);
 }
 .news-track{
-  display:inline-flex;white-space:nowrap;
+  display:flex;white-space:nowrap;
   will-change:transform;
 }
 .news-track-item{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:0 2rem 0 0;font-size:.78rem;opacity:.9;
+  display:inline-flex;flex-direction:column;align-items:flex-start;gap:.1rem;
+  padding:0 3rem 0 0;font-size:.72rem;line-height:1.2;opacity:.85;
+  min-width:320px;max-width:400px;
 }
-.news-track-item a{color:#fff;text-decoration:none}
+.news-track-item a{color:#fff;text-decoration:none;font-weight:600}
 .news-track-item a:hover{text-decoration:underline;opacity:1}
-.news-track-item .sep{color:rgba(255,255,255,.25);font-weight:300}
+.news-track-item .news-desc{font-size:.65rem;opacity:.65;white-space:normal;overflow:hidden;text-overflow:ellipsis;max-width:380px;line-height:1.2}
+.news-track-item .sep{display:none}
 .news-banner-more{
   flex-shrink:0;font-size:.68rem;
   color:rgba(255,255,255,.7);cursor:pointer;white-space:nowrap;
@@ -667,7 +677,7 @@ section[id]{scroll-margin-top:4rem}
 <!-- ===== NAVIGATION ===== -->
 <nav>
   <div class="inner">
-    <span class="logo" data-i18n="nav.logo">Profil TDAH</span>
+    <a href="#" class="logo" data-i18n="nav.logo" title="🏠 Accueil — retour en haut">🏠 Profil TDAH</a>
     <div class="links">
       <a href="#resume" data-i18n="nav.resume">Résumé</a>
       <a href="#chronologie" data-i18n="nav.parcours">Parcours</a>
@@ -1390,6 +1400,14 @@ section[id]{scroll-margin-top:4rem}
   <div id="test-results"></div>
 </section>
 
+<div style="text-align:center;padding:1.5rem 0 .5rem;font-size:.7rem;opacity:.4;letter-spacing:.05em">
+  <span style="display:inline-flex;align-items:center;gap:.4rem">
+    <span>✦</span>
+    <span data-i18n="sig.text">Created with 🧠 by Tazou</span>
+    <span>✦</span>
+  </span>
+</div>
+
 </div>
 
 <footer data-i18n="footer.text">
@@ -1979,7 +1997,7 @@ Règles :
       const d = await r.json();
       articles = d.articles || [];
       render(filter);
-      initTicker(articles.slice(0,5));
+      initTicker(articles.slice(0,10));
     } catch(e){
       if(TICKER_EL) TICKER_EL.innerHTML = '<span class="news-banner-item active">📡 Actualités indisponibles</span>';
       if(LIST_EL) LIST_EL.innerHTML = '<div class="news-error">⚠ Erreur : '+esc(e.message)+'</div>';
@@ -1994,15 +2012,16 @@ Règles :
     // Build content: headline · headline · headline · (duplicate for seamless loop)
     var html = arr.map(function(a,i){
       return '<span class="news-track-item">'+
-        (a.icon||'📰')+' <a href="'+esc(a.link)+'" target="_blank" rel="noopener">'+esc(a.title)+'</a>'+
-        '<span class="sep">·</span></span>';
+        '<span><a href="'+esc(a.link)+'" target="_blank" rel="noopener">'+(a.icon||'📰')+' '+esc(a.title)+'</a></span>'+
+        (a.description ? '<span class="news-desc">'+esc(a.description.substring(0,120))+'</span>' : '')+
+        '</span>';
     }).join('');
 
     // Duplicate for seamless loop
     track.innerHTML = html + html;
 
     // Measure and animate
-    var speed = 40; // px per second
+    var speed = 50; // px per second
     var w = track.scrollWidth / 2; // width of one set
     var duration = w / speed;
 
@@ -2051,6 +2070,33 @@ Règles :
   });
 
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',loadNews); else loadNews();
+})();
+
+/* ── Scroll Spy — active nav link on scroll ── */
+(function(){
+  var navLinks = document.querySelectorAll('nav .links a');
+  if(!navLinks.length) return;
+  var sections = [];
+  navLinks.forEach(function(a){
+    var id = a.getAttribute('href');
+    if(id && id.charAt(0)==='#'){
+      var el = document.getElementById(id.substring(1));
+      if(el) sections.push({el:el, link:a});
+    }
+  });
+  if(!sections.length) return;
+  function updateActive(){
+    var scrollY = window.scrollY + 100;
+    var active = null;
+    for(var i=sections.length-1; i>=0; i--){
+      var s = sections[i];
+      if(s.el.offsetTop <= scrollY){ active = s; break; }
+    }
+    [].forEach.call(navLinks, function(l){ l.classList.remove('active'); });
+    if(active) active.link.classList.add('active');
+  }
+  window.addEventListener('scroll', updateActive, {passive:true});
+  updateActive();
 })();
 </script>
 

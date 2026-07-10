@@ -9,7 +9,7 @@ const i18n = {
     "meta.title": "Profil TDAH inattentif — Support de consultation",
 
     /* ── NAV ── */
-    "nav.logo": "Profil TDAH",
+    "nav.logo": "🏠 Profil TDAH",
     "nav.resume": "Résumé",
     "nav.parcours": "Parcours",
     "nav.symptomes": "Symptômes",
@@ -266,6 +266,7 @@ const i18n = {
     "news.filter.en": "🇬🇧 English",
 
     /* ── FOOTER ── */
+    "sig.text": "Créé avec 🧠 par Tazou",
     "footer.text": "Document préparatoire — Support de consultation psychiatrique",
   },
 
@@ -274,7 +275,7 @@ const i18n = {
     "meta.title": "Adult ADHD Profile — Consultation Support",
 
     /* ── NAV ── */
-    "nav.logo": "ADHD Profile",
+    "nav.logo": "🏠 ADHD Profile",
     "nav.resume": "Summary",
     "nav.parcours": "Journey",
     "nav.symptomes": "Symptoms",
@@ -530,6 +531,7 @@ const i18n = {
     "news.filter.en": "🇬🇧 English",
 
     /* ── FOOTER ── */
+    "sig.text": "Created with 🧠 by Tazou",
     "footer.text": "Preparatory Document — Psychiatric Consultation Support",
   }
 };
