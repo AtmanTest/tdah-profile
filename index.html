@@ -169,13 +169,17 @@ a{color:var(--accent);text-decoration:none}
 .hero::before{
   content:'';
   position:absolute;top:0;left:0;right:0;bottom:0;
-  background:url('images/hero-bg.png') center/cover no-repeat;
-  opacity:.5;
+  background:
+    linear-gradient(135deg, rgba(14,14,26,.92) 0%, rgba(14,14,26,.6) 50%, rgba(14,14,26,.88) 100%),
+    url('images/hero-bg.png') center/cover no-repeat;
   pointer-events:none;
 }
 .hero>*{position:relative;z-index:1}
-[data-theme="dark"] .hero::before{opacity:.4}
-[data-theme="light"] .hero::before{opacity:.3}
+[data-theme="light"] .hero::before{
+  background:
+    linear-gradient(135deg, rgba(250,250,250,.92) 0%, rgba(250,250,250,.6) 50%, rgba(250,250,250,.88) 100%),
+    url('images/hero-bg.png') center/cover no-repeat;
+}
 .hero .badge{
   display:inline-block;font-size:.68rem;font-weight:600;
   text-transform:uppercase;letter-spacing:.05em;
@@ -385,22 +389,28 @@ section[id]>:first-child{margin-top:0}
 #symptomes{background:var(--surface);position:relative;overflow:hidden}
 #symptomes::before{
   content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-  background:url('images/brouillard-bg.png') center/cover no-repeat;
-  opacity:.3;pointer-events:none;
+  background:
+    linear-gradient(135deg, rgba(22,22,42,.92) 0%, rgba(22,22,42,.65) 50%, rgba(22,22,42,.88) 100%),
+    url('images/brouillard-bg.png') center/cover no-repeat;
+  pointer-events:none;
 }
 #symptomes>*{position:relative;z-index:1}
 #exemples{background:var(--bg);position:relative;overflow:hidden}
 #exemples::before{
   content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-  background:url('images/consultation-bg.png') center/cover no-repeat;
-  opacity:.25;pointer-events:none;
+  background:
+    linear-gradient(135deg, rgba(14,14,26,.92) 0%, rgba(14,14,26,.65) 50%, rgba(14,14,26,.88) 100%),
+    url('images/consultation-bg.png') center/cover no-repeat;
+  pointer-events:none;
 }
 #exemples>*{position:relative;z-index:1}
-#impacts{background:var(--surface);position:relative;overflow:hidden}
+#impacts{background:var(--bg);position:relative;overflow:hidden}
 #impacts::before{
   content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-  background:url('images/donnees-bg.png') center/cover no-repeat;
-  opacity:.25;pointer-events:none;
+  background:
+    linear-gradient(135deg, rgba(14,14,26,.92) 0%, rgba(14,14,26,.65) 50%, rgba(14,14,26,.88) 100%),
+    url('images/donnees-bg.png') center/cover no-repeat;
+  pointer-events:none;
 }
 #impacts>*{position:relative;z-index:1}
 #pourquoi{background:var(--bg)}
