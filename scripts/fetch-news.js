@@ -1,192 +1,123 @@
-#!/usr/bin/env node
 /**
- * TDAH Profile — RSS News Fetcher
- * Fetches from multiple ADHD/TDAH news sources, deduplicates, saves news.json
- * Runs in GitHub Actions (pure Node.js, zero npm deps)
- *
- * Source RSS:
- *   EN — ADDitude Magazine, CHADD, Google News ADHD, Google News ADHD Research
- *   FR — TDAH France (HyperSupers), Google News TDAH France
+ * News Ticker — JS requestAnimationFrame scrolling
+ * Seamless loop, fast (150px/s), pauses on hover
  */
+(function(){
+  'use strict';
+  const TICKER_EL = document.getElementById('news-ticker');
+  const LIST_EL = document.getElementById('news-list');
+  const FILTERS = document.getElementById('news-filters');
+  let articles = [], filter = 'all';
 
-const https = require('https');
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+  var tickerSpeed = 150; // px per second (was 80 — user said 3x too slow)
 
-// ── Config ──
-const NEWS_FILE = path.join(__dirname, '..', 'news.json');
-const MAX_ARTICLES = 30; // total in output
-const MAX_PER_FEED = 12; // max per source
-
-const FEEDS = [
-  // English — primary ADHD sources
-  { url: 'https://www.additudemag.com/feed/', label: 'ADDitude Magazine', lang: 'EN', icon: '📰' },
-  { url: 'https://chadd.org/feed/', label: 'CHADD', lang: 'EN', icon: '🏛️' },
-  { url: 'https://news.google.com/rss/search?q=ADHD&hl=en-US&gl=US&ceid=US:en', label: 'Google News — ADHD', lang: 'EN', icon: '🔍' },
-  { url: 'https://news.google.com/rss/search?q=ADHD+research&hl=en-US&gl=US&ceid=US:en', label: 'Google News — ADHD Research', lang: 'EN', icon: '🔬' },
-
-  // French — TDAH sources
-  { url: 'https://www.tdah-france.fr/spip.php?page=backend', label: 'TDAH France (HyperSupers)', lang: 'FR', icon: '🇫🇷' },
-  { url: 'https://news.google.com/rss/search?q=TDAH&hl=fr&gl=FR&ceid=FR:fr', label: 'Google News — TDAH', lang: 'FR', icon: '🇫🇷' },
-];
-
-// ── Helpers ──
-function fetchXML(url) {
-  return new Promise((resolve, reject) => {
-    const client = url.startsWith('https') ? https : http;
-    const req = client.get(url, { timeout: 15000 }, (res) => {
-      // Follow redirects manually once
-      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        return fetchXML(res.headers.location).then(resolve).catch(reject);
-      }
-      if (res.statusCode !== 200) {
-        return reject(new Error(`HTTP ${res.statusCode} for ${url}`));
-      }
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve(data));
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
     });
-    req.on('error', reject);
-    req.on('timeout', () => { req.destroy(); reject(new Error('Timeout')); });
-  });
-}
+  }
 
-function parseRSS(xml) {
-  const articles = [];
-  // Extract <item> blocks
-  const itemRegex = /<item>([\s\S]*?)<\/item>/gi;
-  let match;
+  function fmtDate(d){
+    if(!d) return '';
+    try{var dt=new Date(d);return dt.toLocaleDateString('fr-FR',{day:'numeric',month:'short'})}catch(e){return d}
+  }
 
-  while ((match = itemRegex.exec(xml)) !== null) {
-    const item = match[1];
-    const extract = (tag) => {
-      const m = item.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i'));
-      return m ? m[1].trim() : '';
-    };
-
-    const title = extract('title');
-    const link = extract('link').replace(/&amp;/g, '&');
-    const description = extract('description')
-      .replace(/<[^>]*>/g, '')
-      .replace(/&amp;/g, '&')
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>')
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
-      .replace(/&#(\d+);/g, (m, d) => String.fromCharCode(d))
-      .trim()
-      .substring(0, 300);
-
-    // Parse date
-    let pubDate = extract('pubDate') || extract('dc:date');
-    let timestamp = 0;
-    if (pubDate) {
-      const d = new Date(pubDate);
-      if (!isNaN(d.getTime())) timestamp = d.getTime();
-    }
-
-    // Source hint from URL
-    let sourceDomain = '';
+  async function loadNews(){
     try {
-      const u = new URL(link);
-      sourceDomain = u.hostname.replace('www.', '');
-    } catch(e) {}
-
-    if (title && link && !title.includes('ADHD directory')) {
-      articles.push({ title: decodeEntities(title), link, description: decodeEntities(description), timestamp, sourceDomain });
+      const r = await fetch('news.json?_=' + Date.now());
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      const d = await r.json();
+      articles = d.articles || [];
+      render(filter);
+      initTicker(articles.slice(0,10));
+    } catch(e){
+      if(TICKER_EL) TICKER_EL.innerHTML = '<span class="news-banner-item active">📡 Actualités indisponibles</span>';
+      if(LIST_EL) LIST_EL.innerHTML = '<div class="news-error">⚠ Erreur : '+esc(e.message)+'</div>';
     }
   }
 
-  return articles;
-}
+  // ── JS-BASED TICKER (replaces CSS animation) ──
+  var tickerRAF = null, tickerX = 0, tickerPaused = false;
 
-function decodeEntities(str) {
-  return str
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&#(\d+);/g, (m, d) => String.fromCharCode(d));
-}
+  function initTicker(arr){
+    var track = document.getElementById('news-track');
+    if(!track) return;
+    if(!arr.length){ track.innerHTML = '<span class="news-track-item">Aucune actualité</span>'; return; }
 
-function isDuplicate(a, b) {
-  // Simple dedup: similar titles
-  const normalize = s => s.toLowerCase().replace(/[^a-z0-9]/g, '').substring(0, 50);
-  return normalize(a.title) === normalize(b.title);
-}
+    var html = arr.map(function(a){
+      return '<span class="news-track-item">'+
+        '<span class="news-title">'+(a.icon||'📰')+' '+esc(a.title)+'</span>'+
+        (a.description ? '<span class="news-desc">'+esc(a.description.substring(0,120))+'</span>' : '')+
+        '</span>';
+    }).join('');
 
-// ── Main ──
-async function main() {
-  console.log(`📡 Fetching ${FEEDS.length} RSS feeds...\n`);
+    // Duplicate for seamless loop
+    track.innerHTML = html + html;
 
-  const allArticles = [];
-  const errors = [];
-  const seen = new Set();
+    // Remove old CSS animation
+    track.style.animation = 'none';
 
-  for (const feed of FEEDS) {
-    try {
-      console.log(`  → ${feed.label} (${feed.url})`);
-      const xml = await fetchXML(feed.url);
-      const items = parseRSS(xml);
-      console.log(`    ✓ ${items.length} articles`);
+    // Cancel previous RAF
+    if(tickerRAF) cancelAnimationFrame(tickerRAF);
+    tickerX = 0;
+    tickerPaused = false;
 
-      // Filter through Google News (they have heavy cross-posting)
-      let added = 0;
-      for (const item of items) {
-        if (!item.title) continue;
-        const key = item.title.toLowerCase().replace(/[^a-z0-9]/g, '').substring(0, 50);
-        if (seen.has(key)) continue;
-        seen.add(key);
+    // Hover pause
+    track.parentElement.onmouseenter = function(){ tickerPaused = true; };
+    track.parentElement.onmouseleave = function(){ tickerPaused = false; };
 
-        allArticles.push({
-          ...item,
-          source: feed.label,
-          lang: feed.lang,
-          icon: feed.icon,
-        });
-        added++;
-        if (added >= MAX_PER_FEED) break;
+    var halfW = track.scrollWidth / 2;
+    if(halfW <= 0) return;
+
+    var lastTime = performance.now();
+
+    function frame(now){
+      if(!tickerPaused){
+        var dt = (now - lastTime) / 1000;
+        tickerX += tickerSpeed * dt;
+        if(tickerX >= halfW) tickerX -= halfW;
+        track.style.transform = 'translateX(-' + tickerX + 'px)';
       }
-      console.log(`    → ${added} new unique articles retained`);
-    } catch (err) {
-      errors.push(`${feed.label}: ${err.message}`);
-      console.log(`    ✗ Error: ${err.message}`);
+      lastTime = now;
+      tickerRAF = requestAnimationFrame(frame);
     }
+
+    tickerRAF = requestAnimationFrame(frame);
   }
 
-  // Sort by date (newest first), fallback to link stability
-  allArticles.sort((a, b) => b.timestamp - a.timestamp);
+  // ── NEWS LIST RENDER ──
+  function render(f){
+    if(!LIST_EL) return;
+    var arr = f==='all' ? articles : articles.filter(function(a){ return a.lang===f; });
+    if(!arr.length){ LIST_EL.innerHTML = '<div class="news-loading">Aucun article</div>'; return; }
+    LIST_EL.innerHTML = arr.map(function(a){
+      return '<div class="news-card">'+
+        '<div class="news-card-top">'+
+          '<span class="news-source-badge '+(a.lang==='FR'?'fr':'en')+'">'+(a.icon||'📰')+' '+esc(a.source||(a.lang==='FR'?'TDAH France':'ADHD'))+'</span>'+
+          (a.date ? '<span class="news-date">'+fmtDate(a.date)+'</span>' : '')+
+          (a.lang==='FR' ? '<span style="font-size:.6rem;color:#3d7a3d">🇫🇷</span>' : '<span style="font-size:.6rem;color:var(--accent)\">🇬🇧</span>')+
+        '</div>'+
+        '<div class="news-card-title"><a href="'+esc(a.link)+'" target="_blank" rel="noopener">'+esc(a.title)+'</a></div>'+
+        (a.description ? '<div class="news-card-desc">'+esc(a.description.replace(/<[^>]*>/g,'').substring(0,200))+'</div>' : '')+
+      '</div>';
+    }).join('');
+  }
 
-  // Limit total
-  const selected = allArticles.slice(0, MAX_ARTICLES);
+  // ── FILTERS ──
+  if(FILTERS){
+    FILTERS.addEventListener('click', function(e){
+      var btn = e.target.closest('.news-filter-btn');
+      if(!btn) return;
+      FILTERS.querySelectorAll('.news-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      filter = btn.getAttribute('data-filter') || 'all';
+      render(filter);
+    });
+  }
 
-  // Build output
-  const output = {
-    fetchedAt: new Date().toISOString(),
-    totalSources: FEEDS.length,
-    sourceErrors: errors.length,
-    errors: errors.length > 0 ? errors : undefined,
-    articles: selected.map((a, i) => ({
-      id: i + 1,
-      title: a.title,
-      link: a.link,
-      description: a.description || null,
-      source: a.source,
-      lang: a.lang || 'EN',
-      icon: a.icon || '📋',
-      date: a.timestamp ? new Date(a.timestamp).toISOString() : null,
-      domain: a.sourceDomain || null,
-    })),
-  };
-
-  fs.writeFileSync(NEWS_FILE, JSON.stringify(output, null, 2), 'utf-8');
-  console.log(`\n✅ ${NEWS_FILE} written — ${selected.length} articles`);
-  if (errors.length > 0) console.log(`⚠ ${errors.length} source error(s):\n    ${errors.join('\n    ')}`);
-}
-
-main().catch(err => {
-  console.error('❌ Fatal:', err.message);
-  process.exit(1);
-});
+  // ── BOOT ──
+  if(document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', loadNews);
+  else
+    loadNews();
+})();

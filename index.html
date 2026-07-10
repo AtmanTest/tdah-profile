@@ -103,9 +103,9 @@ nav .links{
   flex:1;order:3;width:100%;
 }
 @media(min-width:500px){
-  nav .inner{flex-wrap:nowrap;padding:.5rem var(--sp)}
+  nav .inner{padding:.5rem var(--sp)}
   .nav-actions{margin-left:0}
-  nav .links{order:0;width:auto;justify-content:flex-end}
+  nav .links{order:3;width:100%;justify-content:flex-start;margin-top:.2rem}
 }
 nav .links a{
   font-size:.65rem;font-weight:500;color:var(--text-sec);text-decoration:none;
@@ -871,7 +871,7 @@ section[id]{scroll-margin-top:4rem}
       <span class="logo-sub" data-i18n="nav.madeby">✦ Made by Tazou</span>
     </div>
     <div class="nav-actions">
-      <a href="#" id="lang-toggle" data-lang="fr" style="text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:2px;padding:.2rem .45rem;border-radius:8px;background:var(--accent-soft);transition:background .2s;flex-shrink:0;color:var(--text)">🇫🇷<span style="opacity:.4">/</span>🇬🇧</a>
+      <a href="#" id="lang-toggle" data-lang="fr" style="text-decoration:none;font-size:.85rem;display:inline-flex;align-items:center;gap:2px;padding:.2rem .45rem;border-radius:8px;background:var(--accent-soft);transition:background .2s;flex-shrink:0;color:var(--text)"><span data-lang-active="fr">🇫🇷</span><span style="opacity:.3">/</span><span data-lang-active="en" style="opacity:.35">🇬🇧</span></a>
       <button id="theme-toggle" aria-label="Basculer thème" style="background:var(--accent-soft);border:none;cursor:pointer;font-size:1rem;padding:.25rem .4rem;border-radius:8px;display:inline-flex;align-items:center;color:var(--text)">🌙</button>
     </div>
     <div class="links">
@@ -2238,96 +2238,7 @@ Règles :
 })();
 </script>
 
-<!-- ── NEWS FETCHER ── -->
-<script>
-(function(){
-  'use strict';
-  const TICKER_EL = document.getElementById('news-ticker');
-  const LIST_EL = document.getElementById('news-list');
-  const FILTERS = document.getElementById('news-filters');
-  let articles = [], filter = 'all';
-
-  async function loadNews(){
-    try {
-      const r = await fetch('news.json?_=' + Date.now());
-      if(!r.ok) throw new Error('HTTP '+r.status);
-      const d = await r.json();
-      articles = d.articles || [];
-      render(filter);
-      initTicker(articles.slice(0,10));
-    } catch(e){
-      if(TICKER_EL) TICKER_EL.innerHTML = '<span class="news-banner-item active">📡 Actualités indisponibles</span>';
-      if(LIST_EL) LIST_EL.innerHTML = '<div class="news-error">⚠ Erreur : '+esc(e.message)+'</div>';
-    }
-  }
-
-  function initTicker(arr){
-    var track = document.getElementById('news-track');
-    if(!track) return;
-    if(!arr.length){ track.innerHTML = '<span class="news-track-item">Aucune actualité</span>'; return; }
-
-    // Build content: headline · headline · headline · (duplicate for seamless loop)
-    var html = arr.map(function(a,i){
-      return '<span class="news-track-item">'+
-        '<span class="news-title">'+(a.icon||'📰')+' '+esc(a.title)+'</span>'+
-        (a.description ? '<span class="news-desc">'+esc(a.description.substring(0,120))+'</span>' : '')+
-        '</span>';
-    }).join('');
-
-    // Duplicate for seamless loop
-    track.innerHTML = html + html;
-
-    // Measure and animate
-    var speed = 80; // px per second
-    var w = track.scrollWidth / 2; // width of one set
-    var duration = w / speed;
-
-    track.style.animation = 'none';
-    track.offsetHeight; // force reflow
-    track.style.animation = 'ticker-scroll '+duration+'s linear infinite';
-  }
-
-  function render(f){
-    if(!LIST_EL) return;
-    var arr = f==='all' ? articles : articles.filter(function(a){ return a.lang===f; });
-    if(!arr.length){ LIST_EL.innerHTML = '<div class="news-loading">Aucun article</div>'; return; }
-    LIST_EL.innerHTML = arr.map(function(a){
-      return '<div class="news-card">'+
-        '<div class="news-card-top">'+
-          '<span class="news-source-badge '+(a.lang==='FR'?'fr':'en')+'">'+(a.icon||'📰')+' '+esc(a.source||(a.lang==='FR'?'TDAH France':'ADHD'))+'</span>'+
-          (a.date ? '<span class="news-date">'+fmtDate(a.date)+'</span>' : '')+
-          (a.lang==='FR' ? '<span style="font-size:.6rem;color:#3d7a3d">🇫🇷</span>' : '<span style="font-size:.6rem;color:var(--accent)">🇬🇧</span>')+
-        '</div>'+
-        '<div class="news-card-title"><a href="'+esc(a.link)+'" target="_blank" rel="noopener">'+esc(a.title)+'</a></div>'+
-        (a.description ? '<div class="news-card-desc">'+esc(a.description.replace(/<[^>]*>/g,'').substring(0,200))+'</div>' : '')+
-        (a.domain ? '<div class="news-card-domain">'+esc(a.domain)+'</div>' : '')+
-      '</div>';
-    }).join('');
-  }
-
-  function fmtDate(iso){
-    try {
-      var d = new Date(iso), n = new Date();
-      if(d.toDateString()===n.toDateString()) return "Aujourd'hui";
-      var y = new Date(n); y.setDate(y.getDate()-1);
-      if(d.toDateString()===y.toDateString()) return 'Hier';
-      return d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
-    } catch(e){ return ''; }
-  }
-
-  function esc(s){ if(!s) return ''; return document.createElement('div').appendChild(document.createTextNode(s)).parentNode.innerHTML; }
-
-  if(FILTERS) FILTERS.addEventListener('click', function(e){
-    var btn = e.target.closest('.news-filter-btn');
-    if(!btn) return;
-    FILTERS.querySelectorAll('.news-filter-btn').forEach(function(b){ b.classList.remove('active'); });
-    btn.classList.add('active');
-    filter = btn.dataset.filter;
-    render(filter);
-  });
-
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',loadNews); else loadNews();
-})();
+<script src="scripts/fetch-news.js"></script>
 
 /* ── Scroll Spy — active nav link on scroll ── */
 (function(){
@@ -2374,6 +2285,8 @@ Règles :
   });
 })();
 </script>
+
+<script src="scripts/fetch-news.js"></script>
 
 <script src="scripts/dashboard.js"></script>
 <script src="scripts/chat.js"></script>

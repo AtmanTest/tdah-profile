@@ -2,6 +2,7 @@
  * TDAH Profile — i18n Language Loader
  * Switches between FR (default) and EN
  * Persists choice in localStorage
+ * Fix: toggle active/inactive flag, re-run on all data-i18n
  */
 (function(){
   'use strict';
@@ -10,8 +11,8 @@
   const TOGGLE_ID = 'lang-toggle';
 
   function getSavedLang(){
-    try { return localStorage.getItem(STORAGE_KEY) || 'en'; }
-    catch(e){ return 'en'; }
+    try { return localStorage.getItem(STORAGE_KEY) || 'fr'; }
+    catch(e){ return 'fr'; }
   }
 
   function saveLang(lang){
@@ -19,7 +20,7 @@
   }
 
   function applyLang(lang){
-    if(!i18n || !i18n[lang]) return;
+    if(!window.i18n || !i18n[lang]) return;
 
     // Update html lang attribute
     if(i18n[lang]['html.lang'])
@@ -39,20 +40,20 @@
 
       var attr = el.getAttribute('data-i18n-attr');
       if(attr){
-        // data-i18n-attr="placeholder" → setAttribute('placeholder', val)
         el.setAttribute(attr, val);
       } else {
-        // Inner HTML
         el.innerHTML = val;
       }
     }
 
-    // Update toggle button appearance
+    // Update toggle: active flag full opacity, inactive flag dimmed
     var tog = document.getElementById(TOGGLE_ID);
     if(tog){
-      tog.innerHTML = lang === 'fr'
-        ? '🇫🇷<span style="opacity:.4">/</span>🇬🇧'
-        : '<span style="opacity:.4">🇫🇷</span><span style="opacity:.4">/</span>🇬🇧';
+      var activeSpan = tog.querySelector('[data-lang-active="' + lang + '"]');
+      var inactiveLang = lang === 'fr' ? 'en' : 'fr';
+      var inactiveSpan = tog.querySelector('[data-lang-active="' + inactiveLang + '"]');
+      if(activeSpan) activeSpan.style.opacity = '1';
+      if(inactiveSpan) inactiveSpan.style.opacity = '.35';
       tog.setAttribute('data-lang', lang);
     }
   }
@@ -73,6 +74,14 @@
 
   // Boot
   var saved = getSavedLang();
-  applyLang(saved);
-  initToggle();
+  // Ensure DOM is ready
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      applyLang(saved);
+      initToggle();
+    });
+  } else {
+    applyLang(saved);
+    initToggle();
+  }
 })();
