@@ -195,7 +195,7 @@ const i18n = {
     "dlg.pat.18": "D'accord, merci docteur.",
 
     /* ── 60s ── */
-    "60s.text": "<em>« Depuis l'enfance, je fonctionne en dessous de mon potentiel. Trois redoublements, des études interrompues, une carrière en dents de scie malgré de vraies compétences. Mon problème, c'est l'attention : je perds le fil en lisant, en écoutant, en travaillant. J'oublie mes rendez-vous, mes affaires, mes échéances. Mon cerveau est en permanence saturé de pensées parallèles. Je remets tout au dernier moment, je commence sans finir. Je ne suis pas agité, c'est dans ma tête que ça se passe. L'anxiété et la fatigue se sont accumulées avec l'âge. J'ai tout essayé pour m'organiser, rien ne tient. Aujourd'hui je consulte parce que je n'en peux plus de compenser. »</em>",
+    "60s.text": "<em>« Depuis l'enfance, je fonctionne en dessous de mon potentiel. Trois redoublements, des études interrompues, une carrière en dents de scie malgré de vraies compétences. Mon problème, c'est l'attention : je perds le fil en lisant, en écoutant, en travaillant. J'oublie mes rendez-vous, mes affaires, mes échéances. Mon cerveau est en permanence saturé de pensées parallèles. Je remets tout au dernier moment, je commence sans finir. Je ne suis pas agité, c'est dans ma tête que ça se passe. Mais il y a aussi cette impulsivité — je parle sans réfléchir, j'achète sous le coup de l'impulsion, j'ai du mal à attendre mon tour. L'alcool, je le contrôle mal : une fois lancé, je ne m'arrête pas. L'anxiété et la fatigue se sont accumulées avec l'âge. J'ai tout essayé pour m'organiser, rien ne tient. Aujourd'hui je consulte parce que je n'en peux plus de compenser. »</em>",
 
     /* ── TABLE ── */
     "tbl.col1": "Symptôme",
@@ -459,7 +459,7 @@ const i18n = {
     "dlg.pat.18": "Thank you, doctor.",
 
     /* ── 60s ── */
-    "60s.text": "<em>« Since childhood, I've functioned below my potential. Three repeated grades, interrupted studies, a jagged career despite real skills. My problem is attention: I lose the thread while reading, listening, working. I miss appointments, lose things, forget deadlines. My brain is permanently saturated with parallel thoughts. I postpone everything, start without finishing. I'm not restless, it happens in my head. Anxiety and fatigue have accumulated with age. I've tried everything to organize, nothing sticks. Today I'm consulting because I can no longer compensate. »</em>",
+    "60s.text": "<em>« Since childhood, I've functioned below my potential. Three repeated grades, interrupted studies, a jagged career despite real skills. My problem is attention: I lose the thread while reading, listening, working. I miss appointments, lose things, forget deadlines. My brain is permanently saturated with parallel thoughts. I postpone everything, start without finishing. I'm not restless, it happens in my head. But there's also this impulsivity — I speak without thinking, buy on impulse, struggle to wait my turn. Alcohol is hard to control: once I start, I can't stop. Anxiety and fatigue have accumulated with age. I've tried everything to organize, nothing sticks. Today I'm consulting because I can no longer compensate. »</em>",
 
     /* ── TABLE ── */
     "tbl.col1": "Symptom",
