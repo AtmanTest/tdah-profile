@@ -753,6 +753,112 @@ section[id]{scroll-margin-top:4rem}
   0%,100%{box-shadow:0 4px 14px rgba(90,127,186,.35),0 0 0 0 rgba(90,127,186,0)}
   50%{box-shadow:0 4px 28px rgba(90,127,186,.6),0 0 0 8px rgba(90,127,186,.1)}}
 #lang-toggle:hover{background:var(--accent-light)}
+
+/* ═══════════════════════════════════════
+   FEATURE: Dashboard scores
+   ═══════════════════════════════════════ */
+.dash-card input[type="number"]:focus{outline:none;border-color:var(--accent)!important;box-shadow:0 0 0 2px rgba(90,127,186,.15)}
+.dash-card input[type="number"]::-webkit-inner-spin-button{opacity:.4}
+
+/* ═══════════════════════════════════════
+   FEATURE: Planner rendez-vous
+   ═══════════════════════════════════════ */
+.planner-progress{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
+.planner-bar{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.planner-bar-fill{height:100%;background:var(--accent);border-radius:4px;transition:width .5s ease}
+.planner-pct{font-size:.75rem;font-weight:600;color:var(--accent);min-width:2.4rem;text-align:right}
+.planner-milestones{display:flex;flex-direction:column;gap:.5rem}
+.planner-milestone{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.planner-m-top{display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;cursor:pointer;-webkit-user-select:none;user-select:none}
+.planner-m-check{width:18px;height:18px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;font-size:.6rem;background:transparent}
+.planner-m-check.done{background:var(--accent);border-color:var(--accent);color:#fff}
+.planner-m-title{flex:1;font-size:.82rem;font-weight:500;color:var(--text)}
+.planner-m-title.done{text-decoration:line-through;opacity:.55}
+.planner-m-toggle{font-size:.6rem;color:var(--text-light);transition:transform .2s;cursor:pointer}
+.planner-m-toggle.open{transform:rotate(90deg)}
+.planner-details{padding:0 .9rem .65rem;display:none}
+.planner-details.open{display:block}
+.planner-desc{font-size:.72rem;color:var(--text-sec);line-height:1.5;margin-bottom:.5rem}
+.planner-notes{width:100%;padding:.45rem .6rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:.72rem;font-family:var(--font);resize:vertical;min-height:40px}
+.planner-checklist{margin-top:1.2rem}
+.planner-checklist h4{font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:.5rem}
+.planner-c-item{display:flex;align-items:center;gap:.45rem;padding:.25rem 0}
+.planner-c-item input[type="checkbox"]{accent-color:var(--accent);cursor:pointer}
+.planner-c-item label{font-size:.75rem;color:var(--text-sec);cursor:pointer}
+.planner-reset{margin-top:.8rem;padding:.3rem .7rem;font-size:.68rem;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--text-light);cursor:pointer;font-family:var(--font)}
+
+/* ═══════════════════════════════════════
+   FEATURE: Daily Tracker
+   ═══════════════════════════════════════ */
+.tracker-today{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem}
+.tracker-today h3{font-size:.9rem;font-weight:600;margin-bottom:.7rem;color:var(--text)}
+.tracker-field{margin-bottom:.6rem}
+.tracker-field label{display:block;font-size:.68rem;font-weight:500;color:var(--text-sec);margin-bottom:.2rem}
+.tracker-field select,.tracker-field input{width:100%;padding:.4rem .5rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:.78rem;font-family:var(--font)}
+.tracker-field select:focus,.tracker-field input:focus{outline:none;border-color:var(--accent)}
+.tracker-field-inline{display:flex;gap:.5rem;align-items:center}
+.tracker-field-inline input{width:80px!important}
+.tracker-checkboxes{display:flex;flex-wrap:wrap;gap:.35rem;margin:.3rem 0}
+.tracker-cb-label{display:flex;align-items:center;gap:.25rem;font-size:.68rem;color:var(--text-sec);cursor:pointer;padding:.15rem .4rem;border:1px solid var(--border);border-radius:12px;transition:all .15s}
+.tracker-cb-label:hover{border-color:var(--accent);color:var(--accent)}
+.tracker-cb-label input{accent-color:var(--accent)}
+.tracker-btn{padding:.4rem 1rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:var(--font)}
+.tracker-btn-del{background:transparent;border:1px solid rgba(200,80,60,.3);color:#c85a3c;padding:.3rem .6rem;border-radius:6px;font-size:.68rem;cursor:pointer;font-family:var(--font)}
+.tracker-heatmap{display:flex;gap:.3rem;margin-bottom:.6rem;flex-wrap:wrap}
+.tracker-h-cell{width:36px;height:36px;border-radius:6px;background:var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.5rem;color:var(--text-light);transition:all .15s;position:relative}
+.tracker-h-cell.has-data{background:rgba(80,160,80,.35)}
+.tracker-h-cell.has-active{background:rgba(80,160,80,.55)}
+.tracker-h-cell.today{border:1.5px solid var(--accent)}
+.tracker-h-cell .th-day{position:absolute;top:-12px;font-size:.45rem;color:var(--text-light)}
+.tracker-hist{padding:.5rem 0}
+.tracker-day{border-left:2px solid var(--border);padding:.35rem .6rem;margin-bottom:.4rem;font-size:.75rem}
+.tracker-day.has-entry{border-left-color:rgba(80,160,80,.4)}
+.tracker-day-header{font-weight:600;color:var(--text);margin-bottom:.15rem}
+.tracker-day-detail{color:var(--text-sec);font-size:.7rem;line-height:1.4}
+.tracker-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem;margin-bottom:1rem}
+.tracker-stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.6rem .8rem}
+.tracker-stat-label{font-size:.6rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.05em}
+.tracker-stat-value{font-size:1.1rem;font-weight:700;color:var(--text);margin-top:.1rem}
+.tracker-badge{font-size:.6rem;padding:.05rem .35rem;border-radius:4px;background:var(--accent-soft);color:var(--accent);margin-right:.2rem;display:inline-block}
+
+/* ═══════════════════════════════════════
+   FEATURE: FAQ + Témoignages
+   ═══════════════════════════════════════ */
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:.4rem;overflow:hidden}
+.faq-q{display:flex;align-items:center;gap:.5rem;padding:.7rem .9rem;cursor:pointer;-webkit-user-select:none;user-select:none;font-size:.82rem;font-weight:500;color:var(--text);transition:background .15s}
+.faq-q:hover{background:var(--accent-light)}
+.faq-q-icon{flex-shrink:0;font-size:.6rem;color:var(--text-light);transition:transform .2s;width:14px;text-align:center}
+.faq-q-icon.open{transform:rotate(90deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 .9rem;font-size:.74rem;color:var(--text-sec);line-height:1.55}
+.faq-a.open{max-height:400px;padding:0 .9rem .7rem}
+.testi-list{display:flex;flex-direction:column;gap:.5rem;max-height:400px;overflow-y:auto}
+.testi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.7rem .9rem}
+.testi-header{display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem}
+.testi-avatar{font-size:1rem}
+.testi-pseudo{font-size:.72rem;font-weight:600;color:var(--text)}
+.testi-date{font-size:.6rem;color:var(--text-light);margin-left:auto}
+.testi-badge{font-size:.55rem;padding:.05rem .35rem;border-radius:4px;background:var(--accent-soft);color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
+.testi-text{font-size:.75rem;color:var(--text-sec);line-height:1.45;margin-top:.2rem}
+.testi-del{background:transparent;border:none;cursor:pointer;font-size:.55rem;color:var(--text-light);padding:.1rem .3rem;margin-top:.15rem;font-family:var(--font)}
+.testi-del:hover{color:#c85a3c}
+.testi-empty{font-size:.75rem;color:var(--text-light);text-align:center;padding:1rem}
+.testi-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.9rem;margin-bottom:.8rem}
+.testi-form h4{font-size:.8rem;font-weight:600;margin-bottom:.5rem;color:var(--text)}
+.testi-form-field{margin-bottom:.5rem}
+.testi-form-field label{font-size:.65rem;color:var(--text-sec);display:block;margin-bottom:.15rem}
+.testi-form-field input,.testi-form-field select,.testi-form-field textarea{width:100%;padding:.4rem .5rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);font-size:.78rem;font-family:var(--font)}
+.testi-form-field textarea{resize:vertical;min-height:70px}
+.testi-form-field input:focus,.testi-form-field select:focus,.testi-form-field textarea:focus{outline:none;border-color:var(--accent)}
+.testi-counter{font-size:.55rem;color:var(--text-light);text-align:right}
+.testi-error{font-size:.65rem;color:#c85a3c;margin-bottom:.3rem;display:none}
+.testi-error.show{display:block}
+
+/* ═══════════════════════════════════════
+   FEATURE: PDF print btn
+   ═══════════════════════════════════════ */
+.pdf-btn-wrap{text-align:center;margin-top:1rem}
+.pdf-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.3rem;background:var(--accent);color:#fff;border:none;border-radius:40px;font-weight:600;font-size:.85rem;cursor:pointer;text-decoration:none;font-family:var(--font);transition:transform .15s,box-shadow .15s}
+.pdf-btn:hover{transform:translateY(-1px);box-shadow:0 3px 12px rgba(90,127,186,.3)}
 </style>
 </head>
 <body>
@@ -777,7 +883,13 @@ section[id]{scroll-margin-top:4rem}
       <a href="#pourquoi" data-i18n="nav.analyse">Analyse</a>
       <a href="#dialogue" data-i18n="nav.consultation">Consultation</a>
       <a href="#psychiatre" data-i18n="nav.60s">60s</a>
-      <a href="#tableau" data-i18n="nav.synthese">Synthèse</a>
+      <a href="#synthese" data-i18n="nav.synthese">Synthèse</a>
+      <a href="#dashboard" data-i18n="nav.dashboard">Scores</a>
+      <a href="#chat" data-i18n="nav.chat">Chat</a>
+      <a href="#pdf" data-i18n="nav.pdf">PDF</a>
+      <a href="#planner" data-i18n="nav.planner">Rdv</a>
+      <a href="#tracker" data-i18n="nav.tracker">Médic</a>
+      <a href="#community" data-i18n="nav.community">Communauté</a>
       <a href="#actualites" data-i18n="nav.actualites">Actualités</a>
       <a href="#tests" data-i18n="nav.tests">Tests</a>
     </div>
@@ -1487,6 +1599,62 @@ section[id]{scroll-margin-top:4rem}
     </div>
   </div>
   <div id="test-results"></div>
+</section>
+
+<!-- ===== 12. DASHBOARD SCORES ===== -->
+<section id="dashboard">
+  <div class="section-label" data-i18n="sec.dashboard">Tableau de bord</div>
+  <h2 data-i18n="h2.dashboard">Vue d'ensemble des scores</h2>
+  <p data-i18n="dashboard.intro" style="margin-bottom:1rem;font-size:.85rem;color:var(--text-sec)">Visualise l'ensemble de tes résultats en un coup d'œil. Renseigne les scores obtenus dans chaque test pour voir apparaître le radar.</p>
+  <div id="dashboard-app"></div>
+</section>
+
+<!-- ===== 13. CHAT TDAH ===== -->
+<section id="chat">
+  <div class="section-label" data-i18n="sec.chat">Assistant TDAH</div>
+  <h2 data-i18n="h2.chat">Chat TDAH — Pose tes questions</h2>
+  <p data-i18n="chat.intro" style="margin-bottom:1rem;font-size:.85rem;color:var(--text-sec)">Un assistant IA spécialisé dans le TDAH adulte. Pose-lui tes questions sur les symptômes, les traitements, les démarches. Gratuit (clé DeepSeek personnelle requise).</p>
+  <div id="chat-key-setup" class="active"></div>
+  <div id="chat-messages" class="chat-messages" style="display:none"></div>
+</section>
+
+<!-- ===== 14. PDF RÉCAPITULATIF ===== -->
+<section id="pdf">
+  <div class="section-label" data-i18n="sec.pdf">Export PDF</div>
+  <h2 data-i18n="h2.pdf">Générer un récapitulatif pour le psychiatre</h2>
+  <p data-i18n="pdf.intro" style="margin-bottom:1rem;font-size:.85rem;color:var(--text-sec)">Un document A4 imprimable avec tous tes scores, les seuils, et la liste des documents à apporter en consultation.</p>
+  <div class="pdf-btn-wrap">
+    <button id="pdf-generate-btn" class="pdf-btn" data-i18n="pdf.btn">📄 Générer le PDF récapitulatif</button>
+  </div>
+</section>
+
+<!-- ===== 15. PLANIFICATEUR RDV ===== -->
+<section id="planner">
+  <div class="section-label" data-i18n="sec.planner">Planificateur</div>
+  <h2 data-i18n="h2.planner">Planifier mon parcours de soin</h2>
+  <p data-i18n="planner.intro" style="margin-bottom:1rem;font-size:.85rem;color:var(--text-sec)">Suis les étapes clés de ton parcours TDAH, coche les jalons et prépare tes documents. Les données restent sur ton appareil.</p>
+  <div id="planner-app"></div>
+</section>
+
+<!-- ===== 16. SUIVI MÉDICAMENTEUX ===== -->
+<section id="tracker">
+  <div class="section-label" data-i18n="sec.tracker">Suivi médicaments</div>
+  <h2 data-i18n="h2.tracker">Suivi médicamenteux quotidien</h2>
+  <p data-i18n="tracker.intro" style="margin-bottom:1rem;font-size:.85rem;color:var(--text-sec)">Enregistre ta prise quotidienne, les dosages et les effets ressentis. Idéal à présenter au psychiatre pour ajuster le traitement.</p>
+  <div id="tracker-app"></div>
+</section>
+
+<!-- ===== 17. COMMUNAUTÉ / FAQ ===== -->
+<section id="community">
+  <div class="section-label" data-i18n="sec.community">Communauté</div>
+  <h2 data-i18n="h2.community">FAQ TDAH + Témoignages</h2>
+  <p data-i18n="community.intro" style="margin-bottom:1rem;font-size:.85rem;color:var(--text-sec)">Des réponses aux questions fréquentes et des retours d'expérience anonymes partagés par d'autres adultes TDAH.</p>
+  <div id="faq-app"></div>
+  <div style="margin-top:1.5rem">
+    <h3 data-i18n="community.testi_title" style="font-size:1rem;font-weight:600;margin-bottom:.3rem;color:var(--text)">💬 Témoignages</h3>
+    <p data-i18n="community.testi_desc" style="font-size:.75rem;color:var(--text-sec);margin-bottom:.6rem">Partage ton expérience anonymement — ça aide d'autres personnes à se sentir moins seules.</p>
+    <div id="testimonials-app"></div>
+  </div>
 </section>
 
 <div style="text-align:center;padding:1.5rem 0 .5rem;font-size:.7rem;opacity:.4;letter-spacing:.05em">
@@ -2207,6 +2375,12 @@ Règles :
 })();
 </script>
 
+<script src="scripts/dashboard.js"></script>
+<script src="scripts/chat.js"></script>
+<script src="scripts/pdf-print.js"></script>
+<script src="scripts/planner.js"></script>
+<script src="scripts/tracker.js"></script>
+<script src="scripts/testimonials.js"></script>
 <script src="scripts/i18n.js"></script>
 </body>
 </html>

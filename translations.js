@@ -20,6 +20,12 @@ const i18n = {
     "nav.consultation": "Consultation",
     "nav.60s": "60s",
     "nav.synthese": "Synthèse",
+    "nav.dashboard": "Scores",
+    "nav.chat": "Chat",
+    "nav.pdf": "PDF",
+    "nav.planner": "Rdv",
+    "nav.tracker": "Médic",
+    "nav.community": "Communauté",
     "nav.actualites": "Actualités",
     "nav.tests": "Tests",
 
@@ -44,6 +50,12 @@ const i18n = {
     "sec.60s": "Version courte",
     "sec.tableau": "Tableau de synthèse",
     "sec.tests": "Auto-évaluations",
+    "sec.dashboard": "Tableau de bord",
+    "sec.chat": "Assistant TDAH",
+    "sec.pdf": "Export PDF",
+    "sec.planner": "Planificateur",
+    "sec.tracker": "Suivi médicaments",
+    "sec.community": "Communauté",
     "sec.actualites": "Actualités TDAH",
 
     /* ── SECTION HEADINGS ── */
@@ -57,6 +69,12 @@ const i18n = {
     "h2.60s": "Ce que je veux dire au psychiatre en 60 secondes",
     "h2.tableau": "Symptômes — Enfance — Adulte — Impact",
     "h2.tests": "Tests de diagnostic",
+    "h2.dashboard": "Vue d'ensemble des scores",
+    "h2.chat": "Chat TDAH — Pose tes questions",
+    "h2.pdf": "Générer un récapitulatif pour le psychiatre",
+    "h2.planner": "Planifier mon parcours de soin",
+    "h2.tracker": "Suivi médicamenteux quotidien",
+    "h2.community": "FAQ TDAH + Témoignages",
     "h2.actualites": "Veille quotidienne",
 
     /* ── RÉSUMÉ ── */
@@ -266,6 +284,27 @@ const i18n = {
     "news.filter.fr": "🇫🇷 Français",
     "news.filter.en": "🇬🇧 English",
 
+    /* ── DASHBOARD ── */
+    "dashboard.intro": "Visualise l'ensemble de tes résultats en un coup d'œil. Renseigne les scores obtenus dans chaque test pour voir apparaître le radar.",
+
+    /* ── CHAT ── */
+    "chat.intro": "Un assistant IA spécialisé dans le TDAH adulte. Pose-lui tes questions sur les symptômes, les traitements, les démarches. Gratuit (clé DeepSeek personnelle requise).",
+
+    /* ── PDF ── */
+    "pdf.intro": "Un document A4 imprimable avec tous tes scores, les seuils, et la liste des documents à apporter en consultation.",
+    "pdf.btn": "📄 Générer le PDF récapitulatif",
+
+    /* ── PLANNER ── */
+    "planner.intro": "Suis les étapes clés de ton parcours TDAH, coche les jalons et prépare tes documents. Les données restent sur ton appareil.",
+
+    /* ── TRACKER ── */
+    "tracker.intro": "Enregistre ta prise quotidienne, les dosages et les effets ressentis. Idéal à présenter au psychiatre pour ajuster le traitement.",
+
+    /* ── COMMUNITY ── */
+    "community.intro": "Des réponses aux questions fréquentes et des retours d'expérience anonymes partagés par d'autres adultes TDAH.",
+    "community.testi_title": "💬 Témoignages",
+    "community.testi_desc": "Partage ton expérience anonymement — ça aide d'autres personnes à se sentir moins seules.",
+
     /* ── FOOTER ── */
     "sig.text": "Créé avec 🧠 par Tazou",
     "footer.text": "Document préparatoire — Support de consultation psychiatrique",
@@ -287,6 +326,12 @@ const i18n = {
     "nav.consultation": "Consultation",
     "nav.60s": "60s",
     "nav.synthese": "Overview",
+    "nav.dashboard": "Scores",
+    "nav.chat": "Chat",
+    "nav.pdf": "PDF",
+    "nav.planner": "Appts",
+    "nav.tracker": "Meds",
+    "nav.community": "Community",
     "nav.actualites": "News",
     "nav.tests": "Assessments",
 
@@ -311,6 +356,12 @@ const i18n = {
     "sec.60s": "Short Version",
     "sec.tableau": "Summary Table",
     "sec.tests": "Self-Assessments",
+    "sec.dashboard": "Dashboard",
+    "sec.chat": "ADHD Assistant",
+    "sec.pdf": "PDF Export",
+    "sec.planner": "Planner",
+    "sec.tracker": "Medication",
+    "sec.community": "Community",
     "sec.actualites": "ADHD News",
 
     /* ── SECTION HEADINGS ── */
@@ -324,6 +375,12 @@ const i18n = {
     "h2.60s": "What I want to tell the psychiatrist in 60 seconds",
     "h2.tableau": "Symptoms — Childhood — Adult — Impact",
     "h2.tests": "Diagnostic Assessments",
+    "h2.dashboard": "Score Overview",
+    "h2.chat": "ADHD Chat — Ask Your Questions",
+    "h2.pdf": "Generate a Summary for Your Psychiatrist",
+    "h2.planner": "Plan Your Care Journey",
+    "h2.tracker": "Daily Medication Tracking",
+    "h2.community": "ADHD FAQ + Testimonials",
     "h2.actualites": "Daily News Watch",
 
     /* ── RÉSUMÉ ── */
@@ -531,6 +588,27 @@ const i18n = {
     "news.filter.all": "All",
     "news.filter.fr": "🇫🇷 French",
     "news.filter.en": "🇬🇧 English",
+
+    /* ── DASHBOARD ── */
+    "dashboard.intro": "View all your results at a glance. Enter the scores from each test to display the radar chart.",
+
+    /* ── CHAT ── */
+    "chat.intro": "An AI assistant specialized in adult ADHD. Ask questions about symptoms, treatments, care pathways. Free (personal DeepSeek key required).",
+
+    /* ── PDF ── */
+    "pdf.intro": "A printable A4 document with all your scores, thresholds, and a checklist of documents to bring to your consultation.",
+    "pdf.btn": "📄 Generate PDF Summary",
+
+    /* ── PLANNER ── */
+    "planner.intro": "Track the key steps of your ADHD care journey, check milestones and prepare your documents. Data stays on your device.",
+
+    /* ── TRACKER ── */
+    "tracker.intro": "Log your daily medication, dosages, and effects. Great to show your psychiatrist for treatment adjustments.",
+
+    /* ── COMMUNITY ── */
+    "community.intro": "Answers to common questions and anonymous experiences shared by other adults with ADHD.",
+    "community.testi_title": "💬 Testimonials",
+    "community.testi_desc": "Share your experience anonymously — it helps others feel less alone.",
 
     /* ── FOOTER ── */
     "sig.text": "Created with 🧠 by Tazou",
