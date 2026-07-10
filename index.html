@@ -170,12 +170,12 @@ a{color:var(--accent);text-decoration:none}
   content:'';
   position:absolute;top:0;left:0;right:0;bottom:0;
   background:url('images/hero-bg.png') center/cover no-repeat;
-  opacity:.3;
+  opacity:.5;
   pointer-events:none;
 }
 .hero>*{position:relative;z-index:1}
-[data-theme="dark"] .hero::before{opacity:.2}
-[data-theme="light"] .hero::before{opacity:.15}
+[data-theme="dark"] .hero::before{opacity:.4}
+[data-theme="light"] .hero::before{opacity:.3}
 .hero .badge{
   display:inline-block;font-size:.68rem;font-weight:600;
   text-transform:uppercase;letter-spacing:.05em;
@@ -386,21 +386,21 @@ section[id]>:first-child{margin-top:0}
 #symptomes::before{
   content:'';position:absolute;top:0;left:0;right:0;bottom:0;
   background:url('images/brouillard-bg.png') center/cover no-repeat;
-  opacity:.15;pointer-events:none;
+  opacity:.3;pointer-events:none;
 }
 #symptomes>*{position:relative;z-index:1}
 #exemples{background:var(--bg);position:relative;overflow:hidden}
 #exemples::before{
   content:'';position:absolute;top:0;left:0;right:0;bottom:0;
   background:url('images/consultation-bg.png') center/cover no-repeat;
-  opacity:.12;pointer-events:none;
+  opacity:.25;pointer-events:none;
 }
 #exemples>*{position:relative;z-index:1}
 #impacts{background:var(--surface);position:relative;overflow:hidden}
 #impacts::before{
   content:'';position:absolute;top:0;left:0;right:0;bottom:0;
   background:url('images/donnees-bg.png') center/cover no-repeat;
-  opacity:.12;pointer-events:none;
+  opacity:.25;pointer-events:none;
 }
 #impacts>*{position:relative;z-index:1}
 #pourquoi{background:var(--bg)}
