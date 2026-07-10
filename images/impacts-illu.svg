@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a3e"/>
+      <stop offset="100%" stop-color="#1e2a4e"/>
+    </linearGradient>
+    <linearGradient id="domino1" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#6b5bff" stop-opacity=".35"/>
+      <stop offset="100%" stop-color="#3b5b8c" stop-opacity=".1"/>
+    </linearGradient>
+    <linearGradient id="domino2" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff6b6b" stop-opacity=".3"/>
+      <stop offset="100%" stop-color="#8b3b5b" stop-opacity=".1"/>
+    </linearGradient>
+    <linearGradient id="arrow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5a7fba" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#8b7bff" stop-opacity=".3"/>
+    </linearGradient>
+    <filter id="sg2">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="400" height="300" rx="16" fill="url(#bg3)"/>
+  
+  <!-- Title -->
+  <text x="200" y="28" text-anchor="middle" fill="#5a7fba" font-size="8" font-family="Inter,sans-serif" opacity=".4">CASCADE DES CONSÉQUENCES</text>
+  
+  <!-- Brain (top) -->
+  <g transform="translate(200,55)">
+    <path d="M-18,-12 C-22,-18 -28,-16 -25,-10 C-30,-6 -28,2 -22,4 L-25,16 C-26,20 -20,22 -18,18 L-14,10 C-6,14 6,14 14,10 L18,18 C20,22 26,20 25,16 L22,4 C28,2 30,-6 25,-10 C28,-16 22,-18 18,-12 C10,-18 -10,-18 -18,-12Z" fill="#3b5b8c" opacity=".6" stroke="#5a7fba" stroke-width="1" filter="url(#sg2)"/>
+    <path d="M-8,-4 C-6,-8 6,-8 8,-4" stroke="#6b5bff" stroke-width="1" opacity=".4"/>
+    <path d="M-6,0 C-4,-3 4,-3 6,0" stroke="#8b7bff" stroke-width="1" opacity=".3"/>
+  </g>
+  
+  <!-- Domino effects -->
+  <g>
+    <!-- Arrow 1: Brain -> Academics -->
+    <line x1="200" y1="80" x2="200" y2="105" stroke="url(#arrow)" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="200,108 195,100 205,100" fill="#5a7fba" opacity=".6"/>
+    
+    <!-- Academics -->
+    <rect x="155" y="108" width="90" height="30" rx="12" fill="url(#domino1)" stroke="#5a7fba" stroke-width="1" opacity=".8"/>
+    <text x="200" y="127" text-anchor="middle" fill="#5a7fba" font-size="10" font-family="Inter,sans-serif" opacity=".8">🎓 Études</text>
+    
+    <!-- Arrow 2: Academics -> Work -->
+    <line x1="200" y1="138" x2="200" y2="158" stroke="url(#arrow)" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="200,161 195,153 205,153" fill="#5a7fba" opacity=".55"/>
+    
+    <!-- Work -->
+    <rect x="155" y="161" width="90" height="30" rx="12" fill="url(#domino1)" stroke="#5a7fba" stroke-width="1" opacity=".75"/>
+    <text x="200" y="180" text-anchor="middle" fill="#5a7fba" font-size="10" font-family="Inter,sans-serif" opacity=".75">💼 Travail</text>
+    
+    <!-- Arrow 3: Work -> Relationships -->
+    <line x1="200" y1="191" x2="200" y2="211" stroke="url(#arrow)" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="200,214 195,206 205,206" fill="#5a7fba" opacity=".5"/>
+    
+    <!-- Relationships -->
+    <rect x="155" y="214" width="90" height="30" rx="12" fill="url(#domino1)" stroke="#5a7fba" stroke-width="1" opacity=".7"/>
+    <text x="200" y="233" text-anchor="middle" fill="#5a7fba" font-size="10" font-family="Inter,sans-serif" opacity=".7">👥 Relations</text>
+    
+    <!-- Arrow 4: Relationships -> Mental Health -->
+    <line x1="200" y1="244" x2="200" y2="264" stroke="url(#arrow)" stroke-width="2" stroke-dasharray="4,3"/>
+    <polygon points="200,267 195,259 205,259" fill="#8b7bff" opacity=".5"/>
+    
+    <!-- Mental Health (broken) -->
+    <rect x="145" y="267" width="110" height="30" rx="12" fill="url(#domino2)" stroke="#ff6b6b" stroke-width="1" opacity=".7"/>
+    <text x="200" y="286" text-anchor="middle" fill="#ff6b6b" font-size="10" font-family="Inter,sans-serif" opacity=".7">🧠 Santé mentale</text>
+  </g>
+</svg>

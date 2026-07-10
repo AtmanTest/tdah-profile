@@ -536,34 +536,21 @@ section[id]>:first-child{margin-top:0}
 #resume{background:var(--surface)}
 #chronologie{background:var(--bg)}
 #symptomes{background:var(--surface);position:relative;overflow:hidden}
-#symptomes::before{
-  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-  background:
-    linear-gradient(135deg, rgba(22,22,42,.92) 0%, rgba(22,22,42,.65) 50%, rgba(22,22,42,.88) 100%),
-    url('images/brouillard-bg.png') center/cover no-repeat;
-  pointer-events:none;
-}
-#symptomes>*{position:relative;z-index:1}
-#exemples{background:var(--bg);position:relative;overflow:hidden}
-#exemples::before{
-  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-  background:
-    linear-gradient(135deg, rgba(14,14,26,.92) 0%, rgba(14,14,26,.65) 50%, rgba(14,14,26,.88) 100%),
-    url('images/consultation-bg.png') center/cover no-repeat;
-  pointer-events:none;
-}
-#exemples>*{position:relative;z-index:1}
-#impacts{background:var(--bg);position:relative;overflow:hidden}
-#impacts::before{
-  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-  background:
-    linear-gradient(135deg, rgba(14,14,26,.92) 0%, rgba(14,14,26,.65) 50%, rgba(14,14,26,.88) 100%),
-    url('images/donnees-bg.png') center/cover no-repeat;
-  pointer-events:none;
-}
-#impacts>*{position:relative;z-index:1}
+#exemples{background:var(--bg)}
+#impacts{background:var(--surface)}
 #pourquoi{background:var(--bg)}
 #dialogue{background:var(--surface)}
+
+/* Section illustration images */
+.section-illu{
+  display:block;width:100%;max-width:320px;
+  margin:0 auto 1.5rem;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+@media(min-width:720px){
+  .section-illu{max-width:360px}
+}
 #tests{background:var(--bg)}
 #psychiatre{background:var(--surface)}
 #tableau{background:var(--bg)}
@@ -1255,6 +1242,7 @@ section[id]>:first-child{margin-top:0}
 <section id="symptomes">
   <div class="section-label" data-i18n="sec.symptomes">Symptômes principaux</div>
   <h2 data-i18n="h2.symptomes">Ce qui se passe dans ma tête et mon corps</h2>
+  <img class="section-illu" src="images/symptomes-illu.svg" alt="Brouillard mental" data-i18n="[alt]illu.symptomes">
   <div class="theme-grid">
 
     <div class="theme-card">
@@ -1342,6 +1330,7 @@ section[id]>:first-child{margin-top:0}
 <section id="exemples">
   <div class="section-label" data-i18n="sec.exemples">Exemples concrets</div>
   <h2 data-i18n="h2.exemples">Dans le quotidien</h2>
+  <img class="section-illu" src="images/exemples-illu.svg" alt="Exemples quotidiens" data-i18n="[alt]illu.exemples">
   <div class="card-grid">
 
     <div class="card">
@@ -1381,6 +1370,7 @@ section[id]>:first-child{margin-top:0}
 <section id="impacts">
   <div class="section-label" data-i18n="sec.impacts">Impacts fonctionnels</div>
   <h2 data-i18n="h2.impacts">Conséquences dans les domaines de vie</h2>
+  <img class="section-illu" src="images/impacts-illu.svg" alt="Impacts fonctionnels" data-i18n="[alt]illu.impacts">
 
   <div class="card">
     <h3 data-i18n="imp.0.title">🎓 Études et formation</h3>
