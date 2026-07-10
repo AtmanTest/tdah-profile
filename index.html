@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profil TDAH inattentif — Support de consultation</title>
+<title data-i18n="meta.title">Profil TDAH inattentif — Support de consultation</title>
+<script src="translations.js"></script>
 <style>
 /* ============================================
    1. RESET & VARIABLES
@@ -656,7 +657,9 @@ section[id]{scroll-margin-top:4rem}
   .tr-results{padding:0}
   .tq-btn{display:none!important}
 }
-
+/* Hero CTA hover */
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(59,91,140,.4)!important}
+#lang-toggle:hover{background:var(--accent-light)}
 </style>
 </head>
 <body>
@@ -664,90 +667,96 @@ section[id]{scroll-margin-top:4rem}
 <!-- ===== NAVIGATION ===== -->
 <nav>
   <div class="inner">
-    <span class="logo">Profil TDAH</span>
+    <span class="logo" data-i18n="nav.logo">Profil TDAH</span>
     <div class="links">
-      <a href="#resume">Résumé</a>
-      <a href="#chronologie">Parcours</a>
-      <a href="#symptomes">Symptômes</a>
-      <a href="#exemples">Exemples</a>
-      <a href="#impacts">Impacts</a>
-      <a href="#pourquoi">Analyse</a>
-      <a href="#dialogue">Consultation</a>
-      <a href="#psychiatre">60s</a>
-      <a href="#tableau">Synthèse</a>
-      <a href="#actualites">Actualités</a>
-      <a href="#tests">Tests</a>
+      <a href="#resume" data-i18n="nav.resume">Résumé</a>
+      <a href="#chronologie" data-i18n="nav.parcours">Parcours</a>
+      <a href="#symptomes" data-i18n="nav.symptomes">Symptômes</a>
+      <a href="#exemples" data-i18n="nav.exemples">Exemples</a>
+      <a href="#impacts" data-i18n="nav.impacts">Impacts</a>
+      <a href="#pourquoi" data-i18n="nav.analyse">Analyse</a>
+      <a href="#dialogue" data-i18n="nav.consultation">Consultation</a>
+      <a href="#psychiatre" data-i18n="nav.60s">60s</a>
+      <a href="#tableau" data-i18n="nav.synthese">Synthèse</a>
+      <a href="#actualites" data-i18n="nav.actualites">Actualités</a>
+      <a href="#tests" data-i18n="nav.tests">Tests</a>
     </div>
+    <a href="#" id="lang-toggle" data-lang="fr" style="text-decoration:none;font-size:.85rem;padding:.1rem .35rem;border-radius:6px;transition:background .2s;flex-shrink:0">🇫🇷 <span style="opacity:.5">/</span> <span style="opacity:.4">🇬🇧</span></a>
   </div>
 </nav>
 
 <!-- ===== NEWS BANNER ===== -->
 <div id="news-banner" class="news-banner">
   <div class="inner">
-    <span class="news-banner-label">📡 Flash TDAH</span>
+    <span class="news-banner-label" data-i18n="news.banner.label">📡 Flash TDAH</span>
     <div class="news-banner-ticker" id="news-ticker">
       <div class="news-track" id="news-track">
-        <span class="news-track-item">⏳ Chargement des actualités…</span>
+        <span class="news-track-item" data-i18n="news.loading">⏳ Chargement des actualités…</span>
       </div>
     </div>
-    <a href="#actualites" class="news-banner-more">Toutes →</a>
+    <a href="#actualites" class="news-banner-more" data-i18n="news.banner.more">Toutes →</a>
   </div>
 </div>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="badge">Support de consultation psychiatrique</div>
-  <h1>Profil TDAH à prédominance<br>inattentive — Adulte</h1>
-  <p class="sub">
+  <div class="badge" data-i18n="hero.badge">Support de consultation psychiatrique</div>
+  <h1 data-i18n="hero.title">Profil TDAH à prédominance<br>inattentive — Adulte</h1>
+  <p class="sub" data-i18n="hero.sub">
     Homme, 42 ans, consultant QA et freelance. Première consultation pour suspicion
     de trouble déficitaire de l’attention sans hyperactivité marquée.
     Ce document organise les éléments à présenter en entretien.
   </p>
   <div class="meta">
-    <span>Âge : 42 ans</span>
-    <span>Secteur : Tech / QA / Freelance</span>
-    <span>Plainte initiale : Brouillard mental, procrastination, épuisement</span>
+    <span data-i18n="hero.meta1">Âge : 42 ans</span>
+    <span data-i18n="hero.meta2">Secteur : Tech / QA / Freelance</span>
+    <span data-i18n="hero.meta3">Plainte initiale : Brouillard mental, procrastination, épuisement</span>
   </div>
+  <!-- Hero CTA to tests -->
+  <a href="#tests" class="hero-cta" style="display:inline-block;margin-top:1.8rem;padding:.75rem 1.8rem;background:var(--accent);color:#fff;border-radius:40px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 14px rgba(59,91,140,.3)">
+    <span data-i18n="hero.cta">Commencer les auto-évaluations →</span>
+    <br><span style="display:inline-block;margin-top:.15rem;font-size:.7rem;font-weight:400;opacity:.8" data-i18n="hero.cta2">5 tests diagnostiques standardisés</span>
+  </a>
 </section>
 
 <div class="container">
 
 <!-- ===== 1. RÉSUMÉ ===== -->
 <section id="resume">
-  <div class="section-label">Résumé du profil</div>
+  <div class="section-label" data-i18n="sec.resume">Résumé du profil</div>
   <div class="card">
-    <p class="summary-block">
-      Je consulte parce que j’ai l’impression de fonctionner en dessous de mon potentiel
-      depuis toujours. J’ai trois redoublements derrière moi, une vie professionnelle
+    <p class="summary-block" data-i18n="resume.p1">
+      Je consulte parce que j'ai l'impression de fonctionner en dessous de mon potentiel
+      depuis toujours. J'ai trois redoublements derrière moi, une vie professionnelle
       irrégulière malgré des compétences solides, et une fatigue mentale constante à
       force de compenser.
     </p>
-    <p class="summary-block">
-      Au quotidien, je perds mes affaires, j’oublie des rendez-vous, je remets tout au
-      dernier moment, et j’ai du mal à suivre une conversation sans que mon esprit parte
-      ailleurs. Ce n’est pas de la mauvaise volonté — j’ai tout essayé pour m’organiser,
+    <p class="summary-block" data-i18n="resume.p2">
+      Au quotidien, je perds mes affaires, j'oublie des rendez-vous, je remets tout au
+      dernier moment, et j'ai du mal à suivre une conversation sans que mon esprit parte
+      ailleurs. Ce n'est pas de la mauvaise volonté — j'ai tout essayé pour m'organiser,
       mais rien ne tient sur la durée.
     </p>
-    <p class="summary-block">
-      Je n’ai jamais été agité physiquement : mon problème est <strong>dans ma tête</strong>.
+    <p class="summary-block" data-i18n="resume.p3">
+      Je n'ai jamais été agité physiquement : mon problème est <strong>dans ma tête</strong>.
       Trop de pensées en même temps, une incapacité à prioriser, un brouillard mental
-      qui s’épaissit dès que la tâche est ennuyeuse ou complexe.
+      qui s'épaissit dès que la tâche est ennuyeuse ou complexe.
     </p>
   </div>
 </section>
 
 <!-- ===== 2. FRISE CHRONOLOGIQUE ===== -->
 <section id="chronologie">
-  <div class="section-label">Parcours de vie</div>
-  <h2>Une chronique de l’inattention</h2>
+  <div class="section-label" data-i18n="sec.parcours">Parcours de vie</div>
+  <h2 data-i18n="h2.parcours">Une chronique de l'inattention</h2>
   <div class="timeline">
 
     <div class="timeline-item">
-      <div class="age">Enfance (6–11 ans)</div>
-      <h3>L’élève distrait, pas turbulent</h3>
-      <p>
+      <div class="age" data-i18n="tl.1.age">Enfance (6–11 ans)</div>
+      <h3 data-i18n="tl.1.title">L'élève distrait, pas turbulent</h3>
+      <p data-i18n="tl.1.desc">
         Jamais agité, jamais puni pour indiscipline. Mais les bulletins disaient
-        «&nbsp;peut mieux faire&nbsp;», «&nbsp;manque d’attention&nbsp;»,
+        «&nbsp;peut mieux faire&nbsp;», «&nbsp;manque d'attention&nbsp;»,
         «&nbsp;rêveur&nbsp;». Je perdais tout — trousse, cahier, veste.
         Les devoirs étaient une souffrance : je commençais, je me levais,
         je commençais autre chose. Ma mère passait des heures à me faire
@@ -756,67 +765,67 @@ section[id]{scroll-margin-top:4rem}
     </div>
 
     <div class="timeline-item">
-      <div class="age">Adolescence (12–17 ans)</div>
-      <h3>Trois redoublements, zéro méthode</h3>
-      <p>
-        J’ai redoublé trois fois jusqu’au bac. Pas par manque d’intelligence —
-        mais parce que je n’arrivais pas à suivre le rythme, à organiser mes
+      <div class="age" data-i18n="tl.2.age">Adolescence (12–17 ans)</div>
+      <h3 data-i18n="tl.2.title">Trois redoublements, zéro méthode</h3>
+      <p data-i18n="tl.2.desc">
+        J'ai redoublé trois fois jusqu'au bac. Pas par manque d'intelligence —
+        mais parce que je n'arrivais pas à suivre le rythme, à organiser mes
         révisions, à finir mes lectures. Je comprenais en classe, mais chez moi
         je me noyais dans les détails. Je lisais la même phrase cinq fois sans
-        la retenir. Je commençais mes exposés la veille, dans l’urgence.
+        la retenir. Je commençais mes exposés la veille, dans l'urgence.
       </p>
     </div>
 
     <div class="timeline-item">
-      <div class="age">Études supérieures (18–24 ans)</div>
-      <h3>Le décrochage silencieux</h3>
-      <p>
-        J’ai intégré une formation en informatique, motivé par la technique.
+      <div class="age" data-i18n="tl.3.age">Études supérieures (18–24 ans)</div>
+      <h3 data-i18n="tl.3.title">Le décrochage silencieux</h3>
+      <p data-i18n="tl.3.desc">
+        J'ai intégré une formation en informatique, motivé par la technique.
         Mais très vite les mêmes difficultés sont revenues : cours magistraux
         insoutenables, projets rendus en retard, absences accumulées par
-        épuisement de devoir compenser. J’ai interrompu ma formation une
-        première fois, repris, abandonné à nouveau. Le sentiment d’être
-        «&nbsp;intelligent mais incapable de concrétiser&nbsp;» s’est installé.
+        épuisement de devoir compenser. J'ai interrompu ma formation une
+        première fois, repris, abandonné à nouveau. Le sentiment d'être
+        «&nbsp;intelligent mais incapable de concrétiser&nbsp;» s'est installé.
       </p>
     </div>
 
     <div class="timeline-item">
-      <div class="age">Début de vie adulte (25–32 ans)</div>
-      <h3>L’errance professionnelle compensée</h3>
-      <p>
-        J’ai enchaîné des postes en dessous de mon niveau, puis j’ai bifurqué
+      <div class="age" data-i18n="tl.4.age">Début de vie adulte (25–32 ans)</div>
+      <h3 data-i18n="tl.4.title">L'errance professionnelle compensée</h3>
+      <p data-i18n="tl.4.desc">
+        J'ai enchaîné des postes en dessous de mon niveau, puis j'ai bifurqué
         vers la QA et le freelance — un cadre où la variété des missions masquait
-        mes difficultés d’organisation. Je performais bien sur des sprints courts,
-        mais je me noyais dès qu’il fallait planifier, suivre un planning,
+        mes difficultés d'organisation. Je performais bien sur des sprints courts,
+        mais je me noyais dès qu'il fallait planifier, suivre un planning,
         prioriser plusieurs sujets. Plusieurs missions se sont terminées
         parce que «&nbsp;trop de retard&nbsp;» ou «&nbsp;manque de visibilité&nbsp;».
       </p>
     </div>
 
     <div class="timeline-item">
-      <div class="age">Vie professionnelle installée (33–40 ans)</div>
-      <h3>Le mur de la maturité</h3>
-      <p>
+      <div class="age" data-i18n="tl.5.age">Vie professionnelle installée (33–40 ans)</div>
+      <h3 data-i18n="tl.5.title">Le mur de la maturité</h3>
+      <p data-i18n="tl.5.desc">
         En tant que freelance, je suis bon sur les aspects techniques et la
         résolution de problèmes. Mais la gestion — administratif, devis,
         relances, planning — est devenue mon point faible structurel.
-        J’accumulais des retards de facturation, des oublis de rendez-vous
+        J'accumulais des retards de facturation, des oublis de rendez-vous
         clients, des projets non lancés par peur de ne pas les finir.
-        L’écart entre ce que je sais faire et ce que j’arrive à produire
-        s’est creusé.
+        L'écart entre ce que je sais faire et ce que j'arrive à produire
+        s'est creusé.
       </p>
     </div>
 
     <div class="timeline-item">
-      <div class="age">Situation actuelle (42 ans)</div>
-      <h3>Le constat</h3>
-      <p>
-        Aujourd’hui je vis avec un brouillard mental quasi permanent.
-        J’ai adopté des astuces — listes, alarmes, rappels — mais rien
+      <div class="age" data-i18n="tl.6.age">Situation actuelle (42 ans)</div>
+      <h3 data-i18n="tl.6.title">Le constat</h3>
+      <p data-i18n="tl.6.desc">
+        Aujourd'hui je vis avec un brouillard mental quasi permanent.
+        J'ai adopté des astuces — listes, alarmes, rappels — mais rien
         ne compense vraiment. Je perds toujours mes clés, mon téléphone,
-        mon portable. J’oublie des appels importants. Je commence des
+        mon portable. J'oublie des appels importants. Je commence des
         dizaines de projets que je ne termine pas. La fatigue mentale
-        est telle que j’ai fini par consulter, parce que je ne peux plus
+        est telle que j'ai fini par consulter, parce que je ne peux plus
         continuer à compenser.
       </p>
     </div>
@@ -826,86 +835,86 @@ section[id]{scroll-margin-top:4rem}
 
 <!-- ===== 3. SYMPTÔMES ===== -->
 <section id="symptomes">
-  <div class="section-label">Symptômes principaux</div>
-  <h2>Ce qui se passe dans ma tête</h2>
+  <div class="section-label" data-i18n="sec.symptomes">Symptômes principaux</div>
+  <h2 data-i18n="h2.symptomes">Ce qui se passe dans ma tête et mon corps</h2>
   <div class="theme-grid">
 
     <div class="theme-card">
       <span class="icon">🧠</span>
-      <h3>Brouillard mental</h3>
-      <p>Sensation d'avoir la tête embrumée, surtout face à une tâche qui demande de l'attention soutenue. Comme si un voile tombait sur ma concentration.</p>
+      <h3 data-i18n="sym.0.title">Brouillard mental</h3>
+      <p data-i18n="sym.0.desc">Sensation d'avoir la tête embrumée, surtout face à une tâche qui demande de l'attention soutenue. Comme si un voile tombait sur ma concentration.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">🌀</span>
-      <h3>Trop de pensées en parallèle</h3>
-      <p>Mon esprit passe d'un sujet à l'autre sans pause. Je pense à trois choses à la fois, ce qui m'empêche d'en finir une correctement.</p>
+      <h3 data-i18n="sym.1.title">Trop de pensées en parallèle</h3>
+      <p data-i18n="sym.1.desc">Mon esprit passe d'un sujet à l'autre sans pause. Je pense à trois choses à la fois, ce qui m'empêche d'en finir une correctement.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">⏳</span>
-      <h3>Procrastination massive</h3>
-      <p>Impossible de commencer une tâche perçue comme ennuyeuse ou complexe. Je tourne autour pendant des heures, parfois des jours, jusqu'à l'urgence absolue.</p>
+      <h3 data-i18n="sym.2.title">Procrastination massive</h3>
+      <p data-i18n="sym.2.desc">Impossible de commencer une tâche perçue comme ennuyeuse ou complexe. Je tourne autour pendant des heures, parfois des jours, jusqu'à l'urgence absolue.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">📌</span>
-      <h3>Oublis quotidiens</h3>
-      <p>Clés, téléphone, carte bleue, rendez-vous, appels — rien n'est fiable. Je vis avec la peur constante d'avoir oublié quelque chose d'important.</p>
+      <h3 data-i18n="sym.3.title">Oublis quotidiens</h3>
+      <p data-i18n="sym.3.desc">Clés, téléphone, carte bleue, rendez-vous, appels — rien n'est fiable. Je vis avec la peur constante d'avoir oublié quelque chose d'important.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">🧩</span>
-      <h3>Difficulté à prioriser</h3>
-      <p>Quand plusieurs tâches s'accumulent, je suis incapable de décider par quoi commencer. Je stagne, je zappe, je me disperse.</p>
+      <h3 data-i18n="sym.4.title">Difficulté à prioriser</h3>
+      <p data-i18n="sym.4.desc">Quand plusieurs tâches s'accumulent, je suis incapable de décider par quoi commencer. Je stagne, je zappe, je me disperse.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">🚧</span>
-      <h3>Projets non aboutis</h3>
-      <p>Je commence avec enthousiasme, puis très vite l'intérêt retombe ou une difficulté me bloque. Des dizaines de projets dormants jonchent mon parcours.</p>
+      <h3 data-i18n="sym.5.title">Projets non aboutis</h3>
+      <p data-i18n="sym.5.desc">Je commence avec enthousiasme, puis très vite l'intérêt retombe ou une difficulté me bloque. Des dizaines de projets dormants jonchent mon parcours.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">🔁</span>
-      <h3>Difficulté à terminer</h3>
-      <p>Même les tâches que j'ai commencées, je les finis dans l'urgence ou pas du tout. Le passage à l'acte final est un obstacle récurrent.</p>
+      <h3 data-i18n="sym.6.title">Difficulté à terminer</h3>
+      <p data-i18n="sym.6.desc">Même les tâches que j'ai commencées, je les finis dans l'urgence ou pas du tout. Le passage à l'acte final est un obstacle récurrent.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">😰</span>
-      <h3>Anxiété associée</h3>
-      <p>L'accumulation des oublis et des retards génère une anxiété permanente. La peur d'oublier, de décevoir, d'être perçu comme négligent.</p>
+      <h3 data-i18n="sym.7.title">Anxiété associée</h3>
+      <p data-i18n="sym.7.desc">L'accumulation des oublis et des retards génère une anxiété permanente. La peur d'oublier, de décevoir, d'être perçu comme négligent.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">🎰</span>
-      <h3>Recherche de dopamine</h3>
-      <p>Besoin constant de stimulation, de nouveauté, de rush. Sans dopamine, rien n'accroche. Je cherche l'excitation partout — nouveaux projets, risques, jeux, paris — pour me sentir vivant.</p>
+      <h3 data-i18n="sym.8.title">Recherche de dopamine</h3>
+      <p data-i18n="sym.8.desc">Besoin constant de stimulation, de nouveauté, de rush. Sans dopamine, rien n'accroche. Je cherche l'excitation partout — nouveaux projets, risques, jeux, paris — pour me sentir vivant.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">💸</span>
-      <h3>Dépenses impulsives & pertes</h3>
-      <p>Achats compulsifs, investissements risqués sans réflexion (crypto, trading). L'impulsivité TDAH pousse à chercher le gain rapide — et à accumuler les pertes. L'argent part aussi vite qu'il vient.</p>
+      <h3 data-i18n="sym.9.title">Dépenses impulsives & pertes</h3>
+      <p data-i18n="sym.9.desc">Achats compulsifs, investissements risqués sans réflexion (crypto, trading). L'impulsivité TDAH pousse à chercher le gain rapide — et à accumuler les pertes. L'argent part aussi vite qu'il vient.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">🍕</span>
-      <h3>Alimentation compulsive</h3>
-      <p>Grignotage impulsif, nourriture comme récompense dopamine, difficulté à résister aux cravings. Le cerveau TDAH réclame du sucre et du gras pour un shoot de dopamine rapide.</p>
+      <h3 data-i18n="sym.10.title">Alimentation compulsive</h3>
+      <p data-i18n="sym.10.desc">Grignotage impulsif, nourriture comme récompense dopamine, difficulté à résister aux cravings. Le cerveau TDAH réclame du sucre et du gras pour un shoot de dopamine rapide.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">🍷</span>
-      <h3>Addictions & substances</h3>
-      <p>Alcool festif sans contrôle, tendance à l'auto-médication. Le cerveau TDAH cherche des stimulants pour compenser le déficit de dopamine — ce qui augmente le risque d'addictions en tout genre.</p>
+      <h3 data-i18n="sym.11.title">Addictions & substances</h3>
+      <p data-i18n="sym.11.desc">Alcool festif sans contrôle, tendance à l'auto-médication. Le cerveau TDAH cherche des stimulants pour compenser le déficit de dopamine — ce qui augmente le risque d'addictions en tout genre.</p>
     </div>
 
     <div class="theme-card">
       <span class="icon">🔥</span>
-      <h3>Comportements sexuels à risque</h3>
-      <p>Impulsivité sexuelle, recherche de sensations fortes, rapports non protégés ou avec inconnus. La récompense immédiate prend le pas sur la raison, avec des conséquences assumées après coup.</p>
+      <h3 data-i18n="sym.12.title">Comportements sexuels à risque</h3>
+      <p data-i18n="sym.12.desc">Impulsivité sexuelle, recherche de sensations fortes, rapports non protégés ou avec inconnus. La récompense immédiate prend le pas sur la raison, avec des conséquences assumées après coup.</p>
     </div>
 
     </div>
@@ -913,38 +922,38 @@ section[id]{scroll-margin-top:4rem}
 
 <!-- ===== 4. EXEMPLES CONCRETS ===== -->
 <section id="exemples">
-  <div class="section-label">Exemples concrets</div>
-  <h2>Dans le quotidien</h2>
+  <div class="section-label" data-i18n="sec.exemples">Exemples concrets</div>
+  <h2 data-i18n="h2.exemples">Dans le quotidien</h2>
   <div class="card-grid">
 
     <div class="card">
-      <h3>🔑 Les clés, toujours</h3>
-      <p>Je dois chercher mes clés au moins une fois par jour. J’ai installé un crochet à l’entrée, mais je pose les clés sur le bureau, dans ma poche, sur la table de la cuisine — n’importe où. Résultat : 5 à 10 minutes de recherche chaque matin.</p>
+      <h3 data-i18n="ex.0.title">🔑 Les clés, toujours</h3>
+      <p data-i18n="ex.0.desc">Je dois chercher mes clés au moins une fois par jour. J'ai installé un crochet à l'entrée, mais je pose les clés sur le bureau, dans ma poche, sur la table de la cuisine — n'importe où. Résultat : 5 à 10 minutes de recherche chaque matin.</p>
     </div>
 
     <div class="card">
-      <h3>📅 Le rendez-vous perdu</h3>
-      <p>J’ai noté un rendez-vous chez le dentiste. Je l’ai mis dans mon téléphone. Mais j’ai repoussé la confirmation, je ne l’ai pas synchronisé. Le jour J, je m’en suis souvenu à 16h — le rendez-vous était à 14h.</p>
+      <h3 data-i18n="ex.1.title">📅 Le rendez-vous perdu</h3>
+      <p data-i18n="ex.1.desc">J'ai noté un rendez-vous chez le dentiste. Je l'ai mis dans mon téléphone. Mais j'ai repoussé la confirmation, je ne l'ai pas synchronisé. Le jour J, je m'en suis souvenu à 16h — le rendez-vous était à 14h.</p>
     </div>
 
     <div class="card">
-      <h3>📧 Le mail resté en brouillon</h3>
-      <p>Je devais répondre à un client pour un devis. J’ai ouvert le mail, lu, commencé à taper. Puis j’ai été distrait par une notification. Le brouillon est resté là trois semaines. Le client est passé chez un concurrent.</p>
+      <h3 data-i18n="ex.2.title">📧 Le mail resté en brouillon</h3>
+      <p data-i18n="ex.2.desc">Je devais répondre à un client pour un devis. J'ai ouvert le mail, lu, commencé à taper. Puis j'ai été distrait par une notification. Le brouillon est resté là trois semaines. Le client est passé chez un concurrent.</p>
     </div>
 
     <div class="card">
-      <h3>📚 La phrase lue six fois</h3>
-      <p>Je lis un paragraphe technique. Arrivé au milieu, je réalise que j’ai pensé à autre chose pendant la lecture. Je recommence. Pareil. Au bout de six tentatives, j’abandonne et je reviens plus tard.</p>
+      <h3 data-i18n="ex.3.title">📚 La phrase lue six fois</h3>
+      <p data-i18n="ex.3.desc">Je lis un paragraphe technique. Arrivé au milieu, je réalise que j'ai pensé à autre chose pendant la lecture. Je recommence. Pareil. Au bout de six tentatives, j'abandonne et je reviens plus tard.</p>
     </div>
 
     <div class="card">
-      <h3>🛒 Les courses sans liste</h3>
-      <p>Je vais au supermarché pour trois articles. J’en ressors avec douze — et j’ai oublié les trois du départ. Sans liste, mon cerveau suit ce qui attire mon attention sur l’étagère.</p>
+      <h3 data-i18n="ex.4.title">🛒 Les courses sans liste</h3>
+      <p data-i18n="ex.4.desc">Je vais au supermarché pour trois articles. J'en ressors avec douze — et j'ai oublié les trois du départ. Sans liste, mon cerveau suit ce qui attire mon attention sur l'étagère.</p>
     </div>
 
     <div class="card">
-      <h3>💻 Cinq projets ouverts, aucun fini</h3>
-      <p>J’ai actuellement trois dépôts GitHub avec du code commencé, une idée d’application, un site entamé, et une formation entamée. Aucun n’est terminé. Chaque semaine, une nouvelle idée remplace l’ancienne.</p>
+      <h3 data-i18n="ex.5.title">💻 Cinq projets ouverts, aucun fini</h3>
+      <p data-i18n="ex.5.desc">J'ai actuellement trois dépôts GitHub avec du code commencé, une idée d'application, un site entamé, et une formation entamée. Aucun n'est terminé. Chaque semaine, une nouvelle idée remplace l'ancienne.</p>
     </div>
 
   </div>
@@ -952,68 +961,68 @@ section[id]{scroll-margin-top:4rem}
 
 <!-- ===== 5. IMPACTS ===== -->
 <section id="impacts">
-  <div class="section-label">Impacts fonctionnels</div>
-  <h2>Conséquences dans les domaines de vie</h2>
+  <div class="section-label" data-i18n="sec.impacts">Impacts fonctionnels</div>
+  <h2 data-i18n="h2.impacts">Conséquences dans les domaines de vie</h2>
 
   <div class="card">
-    <h3>🎓 Études et formation</h3>
-    <p>Trois redoublements, un parcours haché, des formations interrompues. Pas par manque de capacité, mais par incapacité à suivre un cadre temporel, à organiser mon travail personnel, à soutenir l’attention en cours. L’écart entre le potentiel perçu par les enseignants et les résultats réels était constant.</p>
+    <h3 data-i18n="imp.0.title">🎓 Études et formation</h3>
+    <p data-i18n="imp.0.desc">Trois redoublements, un parcours haché, des formations interrompues. Pas par manque de capacité, mais par incapacité à suivre un cadre temporel, à organiser mon travail personnel, à soutenir l'attention en cours. L'écart entre le potentiel perçu par les enseignants et les résultats réels était constant.</p>
   </div>
 
   <div class="card">
-    <h3>💼 Travail et vie professionnelle</h3>
-    <p>Missions en freelance irrégulières, retards de livrables, difficulté à gérer plusieurs clients en même temps. Compétences techniques reconnues, mais problèmes récurrents de planning, de suivi, de priorisation. Certaines missions non renouvelées à cause de «&nbsp;problèmes d’organisation&nbsp;». Difficulté à passer le cap de la structuration — devis, factures, relances, déclarations — qui me tombe dessus par vagues.</p>
+    <h3 data-i18n="imp.1.title">💼 Travail et vie professionnelle</h3>
+    <p data-i18n="imp.1.desc">Missions en freelance irrégulières, retards de livrables, difficulté à gérer plusieurs clients en même temps. Compétences techniques reconnues, mais problèmes récurrents de planning, de suivi, de priorisation. Certaines missions non renouvelées à cause de «&nbsp;problèmes d'organisation&nbsp;». Difficulté à passer le cap de la structuration — devis, factures, relances, déclarations — qui me tombe dessus par vagues.</p>
   </div>
 
   <div class="card">
-    <h3>📋 Vie administrative</h3>
-    <p>Papiers qui traînent, déclarations oubliées, impôts gérés dans l’urgence, assurance non résiliée à temps, abonnements qui se cumulent sans que je les suive. Chaque tâche administrative est un obstacle psychologique qui me coûte de l’énergie et de l’argent.</p>
+    <h3 data-i18n="imp.2.title">📋 Vie administrative</h3>
+    <p data-i18n="imp.2.desc">Papiers qui traînent, déclarations oubliées, impôts gérés dans l'urgence, assurance non résiliée à temps, abonnements qui se cumulent sans que je les suive. Chaque tâche administrative est un obstacle psychologique qui me coûte de l'énergie et de l'argent.</p>
   </div>
 
   <div class="card">
-    <h3>👥 Relations</h3>
-    <p>Oublis de dates, messages laissés sans réponse, conversations où mon esprit dérive. Difficulté à maintenir le fil des échanges longs. On m’a déjà dit «&nbsp;tu n’écoutes pas&nbsp;» ou «&nbsp;tu as la tête ailleurs&nbsp;». Pas par désintérêt — parce que mon attention part toute seule et que je dois lutter pour la ramener.</p>
+    <h3 data-i18n="imp.3.title">👥 Relations</h3>
+    <p data-i18n="imp.3.desc">Oublis de dates, messages laissés sans réponse, conversations où mon esprit dérive. Difficulté à maintenir le fil des échanges longs. On m'a déjà dit «&nbsp;tu n'écoutes pas&nbsp;» ou «&nbsp;tu as la tête ailleurs&nbsp;». Pas par désintérêt — parce que mon attention part toute seule et que je dois lutter pour la ramener.</p>
   </div>
 
   <div class="card">
-    <h3>🎯 Projets personnels</h3>
-    <p>Une accumulation de projets commencés avec enthousiasme et abandonnés avant la fin. Cours en ligne achetés et jamais terminés. Matériel acheté pour un hobby jamais commencé. Idées d’entreprise, de site, d’application — toutes documentées, aucune concrétisée. Chaque échec laisse une trace d’estime de soi en moins.</p>
+    <h3 data-i18n="imp.4.title">🎯 Projets personnels</h3>
+    <p data-i18n="imp.4.desc">Une accumulation de projets commencés avec enthousiasme et abandonnés avant la fin. Cours en ligne achetés et jamais terminés. Matériel acheté pour un hobby jamais commencé. Idées d'entreprise, de site, d'application — toutes documentées, aucune concrétisée. Chaque échec laisse une trace d'estime de soi en moins.</p>
   </div>
 
   <div class="card">
-    <h3>🧠 Qualité de vie et santé mentale</h3>
-    <p>Fatigue mentale constante à force de compenser. Sentiment de sous-performance chronique. Anxiété liée aux oublis et à l’accumulation des retards. Estime de soi abîmée par les échecs répétés. Épuisement de vivre avec un cerveau qui «&nbsp;ne suit pas&nbsp;». C’est ce qui m’a poussé à consulter.</p>
+    <h3 data-i18n="imp.5.title">🧠 Qualité de vie et santé mentale</h3>
+    <p data-i18n="imp.5.desc">Fatigue mentale constante à force de compenser. Sentiment de sous-performance chronique. Anxiété liée aux oublis et à l'accumulation des retards. Estime de soi abîmée par les échecs répétés. Épuisement de vivre avec un cerveau qui «&nbsp;ne suit pas&nbsp;». C'est ce qui m'a poussé à consulter.</p>
   </div>
 
 </section>
 
 <!-- ===== 6. ANALYSE CLINIQUE ===== -->
 <section id="pourquoi">
-  <div class="section-label">Analyse clinique</div>
-  <h2>Pourquoi cela évoque un TDAH inattentif</h2>
+  <div class="section-label" data-i18n="sec.analyse">Analyse clinique</div>
+  <h2 data-i18n="h2.analyse">Pourquoi cela évoque un TDAH inattentif</h2>
   <div class="pull">
-    <p><strong>Présence depuis l’enfance :</strong> Les difficultés d’attention, d’organisation et d’oubli sont présentes depuis l’école primaire, confirmées par les bulletins et le discours parental.</p>
+    <p data-i18n="an.0"><strong>Présence depuis l'enfance :</strong> Les difficultés d'attention, d'organisation et d'oubli sont présentes depuis l'école primaire, confirmées par les bulletins et le discours parental.</p>
   </div>
   <div class="pull">
-    <p><strong>Caractère transversal :</strong> Les mêmes symptômes se manifestent dans tous les contextes — études, travail, vie quotidienne, relations — et non dans une seule situation.</p>
+    <p data-i18n="an.1"><strong>Caractère transversal :</strong> Les mêmes symptômes se manifestent dans tous les contextes — études, travail, vie quotidienne, relations — et non dans une seule situation.</p>
   </div>
   <div class="pull">
-    <p><strong>Absence d’hyperactivité motrice :</strong> Le profil est inattentif pur. L’agitation est mentale (trop de pensées) et non physique. Ce qui correspond bien à la présentation inattentive du TDAH chez l’adulte, souvent sous-diagnostiquée.</p>
+    <p data-i18n="an.2"><strong>Absence d'hyperactivité motrice :</strong> Le profil est inattentif pur. L'agitation est mentale (trop de pensées) et non physique. Ce qui correspond bien à la présentation inattentive du TDAH chez l'adulte, souvent sous-diagnostiquée.</p>
   </div>
   <div class="pull">
-    <p><strong>Retentissement fonctionnel avéré :</strong> Les conséquences sont documentables : redoublements, missions non renouvelées, oublis répétés, accumulation de projets non aboutis, anxiété secondaire.</p>
+    <p data-i18n="an.3"><strong>Retentissement fonctionnel avéré :</strong> Les conséquences sont documentables : redoublements, missions non renouvelées, oublis répétés, accumulation de projets non aboutis, anxiété secondaire.</p>
   </div>
   <div class="pull">
-    <p><strong>Échec des stratégies compensatoires :</strong> Listes, alarmes, to-do lists, applications — tout a été essayé. Aucune méthode ne tient sur le long terme, ce qui est caractéristique d’un trouble structurel et non d’un simple manque d’organisation.</p>
+    <p data-i18n="an.4"><strong>Échec des stratégies compensatoires :</strong> Listes, alarmes, to-do lists, applications — tout a été essayé. Aucune méthode ne tient sur le long terme, ce qui est caractéristique d'un trouble structurel et non d'un simple manque d'organisation.</p>
   </div>
 </section>
 
 <!-- ===== 7. DIALOGUE PSYCHIATRE-PATIENT ===== -->
 <section id="dialogue">
-  <div class="section-label">Consultation simulée</div>
-  <h2>Dialogue psychiatre-patient</h2>
-  <p style="font-size:.88rem;color:var(--text-light);margin-bottom:1.5rem">
-    Simulation d’un premier entretien structuré. Le Dr. S. interroge, le patient répond
+  <div class="section-label" data-i18n="sec.consultation">Consultation simulée</div>
+  <h2 data-i18n="h2.consultation">Dialogue psychiatre-patient</h2>
+  <p style="font-size:.88rem;color:var(--text-light);margin-bottom:1.5rem" data-i18n="dlg.intro">
+    Simulation d'un premier entretien structuré. Le Dr. S. interroge, le patient répond
     à la première personne. Ce dialogue illustre comment les éléments du profil
     peuvent être présentés en consultation.
   </p>
@@ -1021,21 +1030,21 @@ section[id]{scroll-margin-top:4rem}
   <div class="dialogue">
 
     <!-- ACCUEIL -->
-    <div class="dlg-stage">Début de l'entretien</div>
+    <div class="dlg-stage" data-i18n="dlg.start">Début de l'entretien</div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Bonjour, installez-vous. Qu’est-ce qui vous amène aujourd’hui ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.1">Bonjour, installez-vous. Qu'est-ce qui vous amène aujourd'hui ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Je consulte parce que j’ai l’impression, depuis toujours, de fonctionner en dessous de mon potentiel — comme si mon cerveau m’empêchait de faire ce que je veux faire.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.1">Je consulte parce que j'ai l'impression, depuis toujours, de fonctionner en dessous de mon potentiel — comme si mon cerveau m'empêchait de faire ce que je veux faire.</span>
     </div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">«&nbsp;Depuis toujours&nbsp;»… Pouvez-vous m’en dire plus ? Depuis quand exactement ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.2">«&nbsp;Depuis toujours&nbsp;»… Pouvez-vous m'en dire plus ? Depuis quand exactement ?</span>
     </div>
 
     <div class="dlg-line patient">
@@ -1044,185 +1053,185 @@ section[id]{scroll-margin-top:4rem}
     </div>
 
     <!-- ENFANCE -->
-    <div class="dlg-stage">Recueil des symptômes — Enfance</div>
+    <div class="dlg-stage" data-i18n="dlg.stage.enfance">Recueil des symptômes — Enfance</div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Comment ça se traduisait concrètement à l’école ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.3">Comment ça se traduisait concrètement à l'école ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Je perdais tout le temps mes affaires. Trousse, cahier, veste — ma mère devait racheter des fournitures tous les mois. En classe, je décrochais vite, je regardais par la fenêtre. Les enseignants disaient que j’étais intelligent mais que je ne me concentrais pas.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.3">Je perdais tout le temps mes affaires. Trousse, cahier, veste — ma mère devait racheter des fournitures tous les mois. En classe, je décrochais vite, je regardais par la fenêtre. Les enseignants disaient que j'étais intelligent mais que je ne me concentrais pas.</span>
     </div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Et à la maison, pour les devoirs ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.4">Et à la maison, pour les devoirs ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Une souffrance. Je commençais, je me levais, je faisais autre chose, je revenais. Ma mère passait des heures à côté de moi pour que je tienne en place. Je pouvais passer deux heures sur un exercice qui en aurait pris vingt. Ce n’était pas de la mauvaise volonté, c’était comme si mon cerveau refusait de rester sur la tâche.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.4">Une souffrance. Je commençais, je me levais, je faisais autre chose, je revenais. Ma mère passait des heures à côté de moi pour que je tienne en place. Je pouvais passer deux heures sur un exercice qui en aurait pris vingt. Ce n'était pas de la mauvaise volonté, c'était comme si mon cerveau refusait de rester sur la tâche.</span>
     </div>
 
     <!-- ADOLESCENCE -->
-    <div class="dlg-stage">Parcours scolaire</div>
+    <div class="dlg-stage" data-i18n="dlg.stage.scolaire">Parcours scolaire</div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Et au collège, au lycée ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.5">Et au collège, au lycée ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">J’ai redoublé trois fois jusqu’au bac. Pas parce que j’étais nul — les matières qui m’intéressaient je les réussissais très bien. Mais je n’arrivais pas à organiser mon travail, à réviser régulièrement. Je lisais une phrase cinq fois sans la retenir. J’attendais la veille des examens pour tout apprendre dans l’urgence. Et encore, le déclic venait seulement quand la pression devenait insoutenable.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.5">J'ai redoublé trois fois jusqu'au bac. Pas parce que j'étais nul — les matières qui m'intéressaient je les réussissais très bien. Mais je n'arrivais pas à organiser mon travail, à réviser régulièrement. Je lisais une phrase cinq fois sans la retenir. J'attendais la veille des examens pour tout apprendre dans l'urgence. Et encore, le déclic venait seulement quand la pression devenait insoutenable.</span>
     </div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Est-ce que vous étiez agité, turbulent ? Des problèmes de discipline ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.6">Est-ce que vous étiez agité, turbulent ? Des problèmes de discipline ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Non, pas du tout. J’étais plutôt calme. Le problème, il était dans ma tête, pas dans mon corps. Je n’ai jamais été puni pour agitation, jamais renvoyé. On me disait juste «&nbsp;il est dans la lune&nbsp;», «&nbsp;il ne suit pas&nbsp;».</span>
+      <span class="dlg-text" data-i18n="dlg.pat.6">Non, pas du tout. J'étais plutôt calme. Le problème, il était dans ma tête, pas dans mon corps. Je n'ai jamais été puni pour agitation, jamais renvoyé. On me disait juste «&nbsp;il est dans la lune&nbsp;», «&nbsp;il ne suit pas&nbsp;».</span>
     </div>
 
     <!-- ÉTUDES SUP -->
-    <div class="dlg-stage">Études supérieures</div>
+    <div class="dlg-stage" data-i18n="dlg.stage.sup">Études supérieures</div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Et après le bac ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.7">Et après le bac ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">J’ai commencé une formation en informatique. J’accrochais sur le contenu technique, mais le cadre — cours magistraux, projets longs, partiels — c’était impossible à suivre. Je décrochais pendant les cours, je rendais les projets en retard. J’ai interrompu, repris, abandonné à nouveau. Le sentiment d’être intelligent mais incapable de concrétiser commençait vraiment à peser.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.7">J'ai commencé une formation en informatique. J'accrochais sur le contenu technique, mais le cadre — cours magistraux, projets longs, partiels — c'était impossible à suivre. Je décrochais pendant les cours, je rendais les projets en retard. J'ai interrompu, repris, abandonné à nouveau.</span>
     </div>
 
     <!-- VIE PRO -->
-    <div class="dlg-stage">Vie professionnelle</div>
+    <div class="dlg-stage" data-i18n="dlg.stage.pro">Vie professionnelle</div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Et professionnellement, comment ça se passe ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.8">Et professionnellement, comment ça se passe ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Je suis dans la QA et le freelance. Techniquement, je suis bon — je résous des problèmes complexes, je vois des choses que les autres ne voient pas. Mais tout ce qui est gestion, planning, priorisation, suivi… je me noie. J’ai perdu des missions parce que je n’avais pas répondu à temps, parce que j’avais oublié un rendez-vous, parce que le client estimait que je manquais de visibilité.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.8">Je suis dans la QA et le freelance. Techniquement, je suis bon — je résous des problèmes complexes, je vois des choses que les autres ne voient pas. Mais tout ce qui est gestion, planning, priorisation, suivi… je me noie. J'ai perdu des missions parce que je n'avais pas répondu à temps, parce que j'avais oublié un rendez-vous, parce que le client estimait que je manquais de visibilité.</span>
     </div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Vous arrivez à tenir un planning ? À gérer plusieurs clients ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.9">Vous arrivez à tenir un planning ? À gérer plusieurs clients ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Pas vraiment. Dès que j’ai plus de deux ou trois choses à gérer en parallèle, mon cerveau sature. Je ne sais pas par quoi commencer. Je perds un temps fou à essayer de prioriser, au lieu d’exécuter. Et finalement, je fais tout au dernier moment.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.9">Pas vraiment. Dès que j'ai plus de deux ou trois choses à gérer en parallèle, mon cerveau sature. Je ne sais pas par quoi commencer. Je perds un temps fou à essayer de prioriser, au lieu d'exécuter. Et finalement, je fais tout au dernier moment.</span>
     </div>
 
     <!-- ADMIN -->
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Et l’administratif — déclarations, factures, papiers ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.10">Et l'administratif — déclarations, factures, papiers ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">C’est mon point noir. Je repousse, j’oublie, j’accumule. Une déclaration que je dois faire depuis des mois. Des abonnements que je n’ai pas résiliés. Des relances que je laisse traîner. Chaque tâche administrative est un mur psychologique. Je finis par payer des pénalités, ce qui rajoute de la frustration.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.10">C'est mon point noir. Je repousse, j'oublie, j'accumule. Une déclaration que je dois faire depuis des mois. Des abonnements que je n'ai pas résiliés. Des relances que je laisse traîner. Chaque tâche administrative est un mur psychologique. Je finis par payer des pénalités, ce qui rajoute de la frustration.</span>
     </div>
 
     <!-- VIE QUOTIDIENNE -->
-    <div class="dlg-stage">Impact sur le quotidien</div>
+    <div class="dlg-stage" data-i18n="dlg.stage.quotidien">Impact sur le quotidien</div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Dans la vie de tous les jours, ça donne quoi ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.11">Dans la vie de tous les jours, ça donne quoi ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Je perds mes clés tous les jours, mon téléphone constamment, mon portefeuille régulièrement. J’ai un crochet pour les clés à l’entrée, mais je les pose sur le bureau, dans ma poche, sur la table de la cuisine — n’importe où. Je cherche mes affaires au moins dix minutes chaque matin.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.11">Je perds mes clés tous les jours, mon téléphone constamment, mon portefeuille régulièrement. J'ai un crochet pour les clés à l'entrée, mais je les pose sur le bureau, dans ma poche, sur la table de la cuisine — n'importe où. Je cherche mes affaires au moins dix minutes chaque matin.</span>
     </div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Les rendez-vous ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.12">Les rendez-vous ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Même problème. Je les note, je mets des rappels, mais j’oublie de vérifier. Ou je repousse la confirmation et le rendez-vous passe. Le mois dernier, j’ai loupé un rendez-vous chez le dentiste parce que j’avais noté l’heure dans ma tête et pas dans le calendrier. Je m’en suis souvenu deux heures après.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.12">Même problème. Je les note, je mets des rappels, mais j'oublie de vérifier. Ou je repousse la confirmation et le rendez-vous passe. Le mois dernier, j'ai loupé un rendez-vous chez le dentiste parce que j'avais noté l'heure dans ma tête et pas dans le calendrier.</span>
     </div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Est-ce que vous avez des difficultés à commencer des tâches ? Ou à les finir ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.13">Est-ce que vous avez des difficultés à commencer des tâches ? Ou à les finir ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Les deux. Commencer une tâche que je perçois comme ennuyeuse ou complexe, c’est un blocage. Je tourne autour, je fais autre chose, je trouve des excuses. Et si j’arrive à commencer, je n’arrive pas forcément à finir. Je commence beaucoup de projets : des dépôts GitHub, des formations, des idées d’application. Je les termine rarement.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.13">Les deux. Commencer une tâche que je perçois comme ennuyeuse ou complexe, c'est un blocage. Je tourne autour, je fais autre chose, je trouve des excuses. Et si j'arrive à commencer, je n'arrive pas forcément à finir. Je commence beaucoup de projets que je termine rarement.</span>
     </div>
 
     <!-- MENTAL -->
-    <div class="dlg-stage">Vécu subjectif</div>
+    <div class="dlg-stage" data-i18n="dlg.stage.vecu">Vécu subjectif</div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Comment vous vivez tout ça ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.14">Comment vous vivez tout ça ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">C’est épuisant. Passer ma vie à compenser, à essayer de rattraper mon propre retard, à m’excuser d’avoir oublié. J’ai une anxiété permanente liée à la peur d’oublier quelque chose d’important. Et une fatigue mentale… Je pense que c’est ça qui m’a poussé à consulter, plus que tout. Je n’arrive plus à suivre le rythme.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.14">C'est épuisant. Passer ma vie à compenser, à essayer de rattraper mon propre retard, à m'excuser d'avoir oublié. J'ai une anxiété permanente liée à la peur d'oublier quelque chose d'important. Et une fatigue mentale… Je pense que c'est ça qui m'a poussé à consulter, plus que tout.</span>
     </div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Est-ce que vous avez des moments où tout va bien, où vous êtes particulièrement performant ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.15">Est-ce que vous avez des moments où tout va bien, où vous êtes particulièrement performant ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Oui, mais c’est inégal. Quand quelque chose capte vraiment mon intérêt, je peux être très concentré — pendant des heures, je ne vois pas le temps passer. Mais ça ne marche que pour ce qui me passionne. Dès que c’est obligatoire mais pas stimulant, mon cerveau se rebelle.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.15">Oui, mais c'est inégal. Quand quelque chose capte vraiment mon intérêt, je peux être très concentré — pendant des heures. Mais ça ne marche que pour ce qui me passionne. Dès que c'est obligatoire mais pas stimulant, mon cerveau se rebelle.</span>
     </div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">Et l’humeur dans tout ça ?</span>
+      <span class="dlg-text" data-i18n="dlg.psy.16">Et l'humeur dans tout ça ?</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">Je ne dirais pas que je suis déprimé. Je suis frustré, fatigué, parfois découragé. Mais c’est surtout lié aux difficultés du quotidien — ce n’est pas une tristesse profonde. Quand je suis sur une mission qui m’intéresse, mon humeur va bien.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.16">Je ne dirais pas que je suis déprimé. Je suis frustré, fatigué, parfois découragé. Mais c'est surtout lié aux difficultés du quotidien — ce n'est pas une tristesse profonde. Quand je suis sur une mission qui m'intéresse, mon humeur va bien.</span>
     </div>
 
     <!-- CLÔTURE -->
-    <div class="dlg-stage">Fin de l'entretien</div>
+    <div class="dlg-stage" data-i18n="dlg.stage.fin">Fin de l'entretien</div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">D’accord. Ce que vous décrivez — l’ancienneté des symptômes, leur caractère transversal, l’absence d’hyperactivité motrice, l’échec des stratégies compensatoires — c’est un tableau qui évoque effectivement un TDAH de type inattentif. On va approfondir avec des questionnaires et, si besoin, explorer les pistes thérapeutiques possibles.</span>
+      <span class="dlg-text" data-i18n="dlg.psy.17">D'accord. Ce que vous décrivez — l'ancienneté des symptômes, leur caractère transversal, l'absence d'hyperactivité motrice, l'échec des stratégies compensatoires — c'est un tableau qui évoque effectivement un TDAH de type inattentif. On va approfondir avec des questionnaires.</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">D’accord, merci. Et concrètement, qu’est-ce que ça peut donner comme prise en charge ?</span>
+      <span class="dlg-text" data-i18n="dlg.pat.17">D'accord, merci. Et concrètement, qu'est-ce que ça peut donner comme prise en charge ?</span>
     </div>
 
     <div class="dlg-line psychiatrist">
       <span class="dlg-speaker psy">Dr S.</span>
-      <span class="dlg-text">On verra ça ensemble après le bilan complet. En fonction des résultats, plusieurs options existent — accompagnement psychologique, aménagements, et éventuellement traitement médicamenteux si c’est indiqué et que vous êtes d’accord. On en reparle à la prochaine consultation.</span>
+      <span class="dlg-text" data-i18n="dlg.psy.18">On verra ça ensemble après le bilan complet. En fonction des résultats, plusieurs options existent — accompagnement psychologique, aménagements, et éventuellement traitement médicamenteux si c'est indiqué. On en reparle à la prochaine consultation.</span>
     </div>
 
     <div class="dlg-line patient">
       <span class="dlg-speaker pat">Patient</span>
-      <span class="dlg-text">D’accord, merci docteur.</span>
+      <span class="dlg-text" data-i18n="dlg.pat.18">D'accord, merci docteur.</span>
     </div>
 
   </div>
@@ -1230,19 +1239,19 @@ section[id]{scroll-margin-top:4rem}
 
 <!-- ===== 8. VERSION 60 SECONDES ===== -->
 <section id="psychiatre">
-  <div class="section-label">Version courte</div>
-  <h2>Ce que je veux dire au psychiatre en 60 secondes</h2>
+  <div class="section-label" data-i18n="sec.60s">Version courte</div>
+  <h2 data-i18n="h2.60s">Ce que je veux dire au psychiatre en 60 secondes</h2>
   <div class="card">
-    <p class="sixty">
-      <em>«&nbsp;Depuis l’enfance, je fonctionne en dessous de mon potentiel.
+    <p class="sixty" data-i18n="60s.text">
+      <em>«&nbsp;Depuis l'enfance, je fonctionne en dessous de mon potentiel.
       Trois redoublements, des études interrompues, une carrière en dents de scie
-      malgré de vraies compétences. Mon problème, c’est l’attention : je perds le
-      fil en lisant, en écoutant, en travaillant. J’oublie mes rendez-vous, mes
+      malgré de vraies compétences. Mon problème, c'est l'attention : je perds le
+      fil en lisant, en écoutant, en travaillant. J'oublie mes rendez-vous, mes
       affaires, mes échéances. Mon cerveau est en permanence saturé de pensées
       parallèles. Je remets tout au dernier moment, je commence sans finir.
-      Je ne suis pas agité, c’est dans ma tête que ça se passe. L’anxiété et la
-      fatigue se sont accumulées avec l’âge. J’ai tout essayé pour m’organiser,
-      rien ne tient. Aujourd’hui je consulte parce que je n’en peux plus de
+      Je ne suis pas agité, c'est dans ma tête que ça se passe. L'anxiété et la
+      fatigue se sont accumulées avec l'âge. J'ai tout essayé pour m'organiser,
+      rien ne tient. Aujourd'hui je consulte parce que je n'en peux plus de
       compenser.&nbsp;»</em>
     </p>
   </div>
@@ -1250,78 +1259,78 @@ section[id]{scroll-margin-top:4rem}
 
 <!-- ===== 9. TABLEAU DE SYNTHÈSE ===== -->
 <section id="tableau">
-  <div class="section-label">Tableau de synthèse</div>
-  <h2>Symptômes — Enfance — Adulte — Impact</h2>
+  <div class="section-label" data-i18n="sec.tableau">Tableau de synthèse</div>
+  <h2 data-i18n="h2.tableau">Symptômes — Enfance — Adulte — Impact</h2>
   <div class="table-wrap">
     <table>
       <thead>
         <tr>
-          <th>Symptôme</th>
-          <th>Enfance</th>
-          <th>Âge adulte</th>
-          <th>Impact principal</th>
+          <th data-i18n="tbl.col1">Symptôme</th>
+          <th data-i18n="tbl.col2">Enfance</th>
+          <th data-i18n="tbl.col3">Âge adulte</th>
+          <th data-i18n="tbl.col4">Impact principal</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Inattention aux détails</td>
-          <td>Fautes d’inattention, cahiers négligés</td>
-          <td>Documents avec erreurs, relectures multiples</td>
-          <td>Travail, administratif</td>
+          <td data-i18n="tbl.r0.c1">Inattention aux détails</td>
+          <td data-i18n="tbl.r0.c2">Fautes d'inattention, cahiers négligés</td>
+          <td data-i18n="tbl.r0.c3">Documents avec erreurs, relectures multiples</td>
+          <td data-i18n="tbl.r0.c4">Travail, administratif</td>
         </tr>
         <tr>
-          <td>Difficulté à maintenir l’attention</td>
-          <td>Décrochage en classe, rêverie</td>
-          <td>Brouillard mental, lectures impossibles</td>
-          <td>Études, formation</td>
+          <td data-i18n="tbl.r1.c1">Difficulté à maintenir l'attention</td>
+          <td data-i18n="tbl.r1.c2">Décrochage en classe, rêverie</td>
+          <td data-i18n="tbl.r1.c3">Brouillard mental, lectures impossibles</td>
+          <td data-i18n="tbl.r1.c4">Études, formation</td>
         </tr>
         <tr>
-          <td>Semble ne pas écouter</td>
-          <td>Remarques des enseignants</td>
-          <td>Conversations dérivent, «&nbsp;tête ailleurs&nbsp;»</td>
-          <td>Relations</td>
+          <td data-i18n="tbl.r2.c1">Semble ne pas écouter</td>
+          <td data-i18n="tbl.r2.c2">Remarques des enseignants</td>
+          <td data-i18n="tbl.r2.c3">Conversations dérivent, «&nbsp;tête ailleurs&nbsp;»</td>
+          <td data-i18n="tbl.r2.c4">Relations</td>
         </tr>
         <tr>
-          <td>Ne suit pas les instructions</td>
-          <td>Devoirs incomplets, mal compris</td>
-          <td>Consignes professionnelles mal suivies</td>
-          <td>Travail</td>
+          <td data-i18n="tbl.r3.c1">Ne suit pas les instructions</td>
+          <td data-i18n="tbl.r3.c2">Devoirs incomplets, mal compris</td>
+          <td data-i18n="tbl.r3.c3">Consignes professionnelles mal suivies</td>
+          <td data-i18n="tbl.r3.c4">Travail</td>
         </tr>
         <tr>
-          <td>Difficultés d’organisation</td>
-          <td>Cartable en désordre, pas de méthode</td>
-          <td>Absence de système fiable, missions chaotiques</td>
-          <td>Travail, vie quotidienne</td>
+          <td data-i18n="tbl.r4.c1">Difficultés d'organisation</td>
+          <td data-i18n="tbl.r4.c2">Cartable en désordre, pas de méthode</td>
+          <td data-i18n="tbl.r4.c3">Absence de système fiable, missions chaotiques</td>
+          <td data-i18n="tbl.r4.c4">Travail, vie quotidienne</td>
         </tr>
         <tr>
-          <td>Évite les tâches à effort mental</td>
-          <td>Devoirs repoussés, lectures évitées</td>
-          <td>Procrastination massive, administratif en souffrance</td>
-          <td>Toutes les sphères</td>
+          <td data-i18n="tbl.r5.c1">Évite les tâches à effort mental</td>
+          <td data-i18n="tbl.r5.c2">Devoirs repoussés, lectures évitées</td>
+          <td data-i18n="tbl.r5.c3">Procrastination massive, administratif en souffrance</td>
+          <td data-i18n="tbl.r5.c4">Toutes les sphères</td>
         </tr>
         <tr>
-          <td>Perd les objets</td>
-          <td>Trousse, veste, cahiers</td>
-          <td>Clés, téléphone, portefeuille, outils de travail</td>
-          <td>Quotidien</td>
+          <td data-i18n="tbl.r6.c1">Perd les objets</td>
+          <td data-i18n="tbl.r6.c2">Trousse, veste, cahiers</td>
+          <td data-i18n="tbl.r6.c3">Clés, téléphone, portefeuille, outils de travail</td>
+          <td data-i18n="tbl.r6.c4">Quotidien</td>
         </tr>
         <tr>
-          <td>Facilement distrait</td>
-          <td>Bruit, mouvement, tout le déconcentre</td>
-          <td>Notifications, pensées, tout est distraction</td>
-          <td>Travail, concentration</td>
+          <td data-i18n="tbl.r7.c1">Facilement distrait</td>
+          <td data-i18n="tbl.r7.c2">Bruit, mouvement, tout le déconcentre</td>
+          <td data-i18n="tbl.r7.c3">Notifications, pensées, tout est distraction</td>
+          <td data-i18n="tbl.r7.c4">Travail, concentration</td>
         </tr>
         <tr>
-          <td>Oublie les rendez-vous</td>
-          <td>Rdv chez le médecin oubliés</td>
-          <td>Rendez-vous professionnels, personnels, médicaux</td>
-          <td>Vie sociale, administrative</td>
+          <td data-i18n="tbl.r8.c1">Oublie les rendez-vous</td>
+          <td data-i18n="tbl.r8.c2">Rdv chez le médecin oubliés</td>
+          <td data-i18n="tbl.r8.c3">Rendez-vous professionnels, personnels, médicaux</td>
+          <td data-i18n="tbl.r8.c4">Vie sociale, administrative</td>
         </tr>
         <tr>
-          <td>Projets non aboutis</td>
-          <td>Exposés rendus en retard</td>
-          <td>Idées non concrétisées, formations abandonnées</td>
-          <td>Projets personnels</td>
+          <td data-i18n="tbl.r9.c1">Projets non aboutis</td>
+          <td data-i18n="tbl.r9.c2">Exposés rendus en retard</td>
+          <td data-i18n="tbl.r9.c3">Idées non concrétisées, formations abandonnées</td>
+          <td data-i18n="tbl.r9.c4">Projets personnels</td>
         </tr>
       </tbody>
     </table>
@@ -1331,41 +1340,42 @@ section[id]{scroll-margin-top:4rem}
 <!-- ===== 10. BLOC DE PRUDENCE ===== -->
 <section>
   <div class="caveat">
-    <h3>⚠️ Document préparatoire — pas un diagnostic</h3>
-    <p>
-      Ce site est un <strong>support d’organisation et de réflexion</strong> destiné à préparer
+    <h3 data-i18n="caveat.title">⚠️ Document préparatoire — pas un diagnostic</h3>
+    <p data-i18n="caveat.p1">
+      Ce site est un <strong>support d'organisation et de réflexion</strong> destiné à préparer
       un entretien médical. Il ne constitue pas un diagnostic médical, ni une auto-évaluation
       validée, ni un outil de substitution à une consultation psychiatrique.
-      Les symptômes décrits ici sont présentés à titre illustratif pour un profil fictif
-      cohérent. Seul un médecin spécialiste peut poser un diagnostic de TDAH après
-      un entretien clinique approfondi et, le cas échéant, des examens complémentaires.
+    </p>
+    <p data-i18n="caveat.p2">
+      Les symptômes décrits ici sont présentés à titre illustratif. Seul un médecin spécialiste
+      peut poser un diagnostic de TDAH après un entretien clinique approfondi.
     </p>
   </div>
 </section>
 
 <!-- ===== 12. ACTUALITÉS TDAH ===== -->
 <section id="actualites">
-  <div class="section-label">Actualités TDAH</div>
-  <h2>Veille quotidienne</h2>
-  <p style="margin-bottom:1rem">Articles récents issus de sources spécialisées (ADDitude, CHADD, Google News, TDAH France). Mise à jour automatique chaque jour via GitHub Actions.</p>
+  <div class="section-label" data-i18n="sec.actualites">Actualités TDAH</div>
+  <h2 data-i18n="h2.actualites">Veille quotidienne</h2>
+  <p style="margin-bottom:1rem" data-i18n="news.desc">Articles récents issus de sources spécialisées (ADDitude, CHADD, Google News, TDAH France). Mise à jour automatique chaque jour via GitHub Actions.</p>
   <div class="news-filters" id="news-filters">
-    <button class="news-filter-btn active" data-filter="all">Toutes</button>
-    <button class="news-filter-btn" data-filter="FR">🇫🇷 Français</button>
-    <button class="news-filter-btn" data-filter="EN">🇬🇧 English</button>
+    <button class="news-filter-btn active" data-filter="all" data-i18n="news.filter.all">Toutes</button>
+    <button class="news-filter-btn" data-filter="FR" data-i18n="news.filter.fr">🇫🇷 Français</button>
+    <button class="news-filter-btn" data-filter="EN" data-i18n="news.filter.en">🇬🇧 English</button>
   </div>
   <div id="news-list" class="news-list">
-    <div class="news-loading">⏳ Chargement des actualités…</div>
+    <div class="news-loading" data-i18n="news.loading">⏳ Chargement des actualités…</div>
   </div>
 </section>
 
 <!-- ===== 11. TESTS DE DIAGNOSTIC ===== -->
 <section id="tests">
-  <div class="section-label">Auto-évaluations</div>
-  <h2>Tests de diagnostic</h2>
-  <p>Questionnaires standardisés pour évaluer différents aspects de votre santé mentale. Une question à la fois, résultat immédiat, confidentiel (tout reste sur votre appareil).</p>
+  <div class="section-label" data-i18n="sec.tests">Auto-évaluations</div>
+  <h2 data-i18n="h2.tests">Tests de diagnostic</h2>
+  <p data-i18n="tests.intro">Questionnaires standardisés pour évaluer différents aspects de votre santé mentale. Une question à la fois, résultat immédiat, confidentiel (tout reste sur votre appareil).</p>
   <div class="caveat" style="margin:1rem 0 1.5rem">
-    <h3>⚠ Important à savoir</h3>
-    <p>Ces questionnaires sont des <strong>outils de dépistage et de sensibilisation</strong>, pas des outils de diagnostic. Ils ne remplacent en aucun cas une évaluation par un professionnel de santé. Les résultats sont stockés uniquement sur votre appareil (localStorage) et ne sont pas envoyés sur un serveur.</p>
+    <h3 data-i18n="tests.warning.title">⚠ Important à savoir</h3>
+    <p data-i18n="tests.warning.desc">Ces questionnaires sont des <strong>outils de dépistage et de sensibilisation</strong>, pas des outils de diagnostic. Ils ne remplacent pas une évaluation par un professionnel de santé.</p>
   </div>
   <div id="test-container">
     <div id="test-grid" class="test-grid">
@@ -1379,7 +1389,7 @@ section[id]{scroll-margin-top:4rem}
 
 </div>
 
-<footer>
+<footer data-i18n="footer.text">
   Document préparatoire — Support de consultation psychiatrique
 </footer>
 
@@ -2041,5 +2051,6 @@ Règles :
 })();
 </script>
 
+<script src="scripts/i18n.js"></script>
 </body>
 </html>
