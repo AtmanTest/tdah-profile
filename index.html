@@ -880,8 +880,13 @@ section[id]>:first-child{margin-top:0}
 /* ============================================
    15. NEWS BANNER
    ============================================ */
+/* Luminous blinking news banner */
+@keyframes news-banner-glow{
+  0%,100%{box-shadow:inset 0 0 15px rgba(90,127,186,.08),0 0 8px rgba(90,127,186,.03);}
+  50%{box-shadow:inset 0 0 35px rgba(90,127,186,.22),0 0 20px rgba(90,127,186,.1);}
+}
 .news-banner{
-  background:linear-gradient(90deg,rgba(90,127,186,.06) 0%,rgba(90,127,186,.02) 100%);
+  background:linear-gradient(90deg,rgba(90,127,186,.1) 0%,rgba(90,127,186,.04) 100%);
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
   color:var(--text);
@@ -890,6 +895,7 @@ section[id]>:first-child{margin-top:0}
   overflow:hidden;
   border-bottom:1px solid var(--border);
   transition:opacity .3s,height .3s;
+  animation:news-banner-glow 3s ease-in-out infinite;
 }
 [data-theme="light"] .news-banner{
   background:linear-gradient(90deg,rgba(59,91,140,.05) 0%,rgba(59,91,140,.02) 100%);
@@ -911,12 +917,18 @@ section[id]>:first-child{margin-top:0}
   flex:1;overflow:hidden;
   display:flex;align-items:center;
 }
+/* Bold + blinking All button */
+@keyframes news-more-blink{
+  0%,100%{opacity:.6;text-shadow:none;}
+  50%{opacity:1;text-shadow:0 0 10px rgba(90,127,186,.5);font-weight:800;letter-spacing:.03em;}
+}
 .news-banner-more{
-  flex-shrink:0;font-size:.65rem;
+  flex-shrink:0;font-size:.7rem;font-weight:700;
   color:var(--accent);cursor:pointer;white-space:nowrap;opacity:.6;text-decoration:none;
   transition:opacity .2s;
+  animation:news-more-blink 1.8s ease-in-out infinite;
 }
-.news-banner-more:hover{opacity:1}
+.news-banner-more:hover{opacity:1;animation:none;font-weight:800}
 
 [data-theme="dark"] .news-banner-label{border-color:rgba(90,127,186,.15)}
 
