@@ -156,6 +156,11 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
 p,li{color:var(--text-sec)}
 p{margin-bottom:.9rem}
 a{color:var(--accent);text-decoration:none}
+.section-illu{
+  display:block;width:100%;max-width:720px;
+  margin:0 auto 1.25rem;border-radius:var(--radius);
+  box-shadow:var(--shadow);object-fit:cover;
+}
 
 /* ============================================
    4. HERO
@@ -1370,7 +1375,7 @@ section[id]>:first-child{margin-top:0}
 <section id="impacts">
   <div class="section-label" data-i18n="sec.impacts">Impacts fonctionnels</div>
   <h2 data-i18n="h2.impacts">Conséquences dans les domaines de vie</h2>
-  <div class="section-illu-wrap"><img class="section-illu" src="images/tdah_impacts.png" alt="Impacts fonctionnels" data-i18n="[alt]illu.impacts"></div>
+  <div class="section-illu-wrap"><img class="section-illu" src="images/tdah_domaines_vie.png" alt="Conséquences dans les domaines de vie" data-i18n="[alt]illu.impacts"></div>
 
   <div class="card">
     <h3 data-i18n="imp.0.title">🎓 Études et formation</h3>
@@ -2047,6 +2052,7 @@ section[id]>:first-child{margin-top:0}
 <section id="actualites">
   <div class="section-label" data-i18n="sec.actualites">Actualités TDAH</div>
   <h2 data-i18n="h2.actualites">Veille quotidienne</h2>
+  <div class="section-illu-wrap"><img class="section-illu" src="images/tdah_actualites.png" alt="Veille quotidienne TDAH"></div>
   <p style="margin-bottom:1rem" data-i18n="news.desc">Articles récents issus de sources spécialisées (ADDitude, CHADD, Google News, TDAH France). Mise à jour automatique chaque jour via GitHub Actions.</p>
   <div class="news-filters" id="news-filters">
     <button class="news-filter-btn active" data-filter="all" data-i18n="news.filter.all">Toutes</button>
