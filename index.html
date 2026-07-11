@@ -129,6 +129,12 @@ nav .links a.active{
 }
 @keyframes nav-blink{0%,100%{opacity:1;box-shadow:0 0 14px rgba(90,127,186,.5)}50%{opacity:.88;box-shadow:0 0 20px rgba(90,127,186,.7)}}
 nav .links a.active{animation:nav-blink 1.8s ease-in-out infinite}
+/* Orange glow on Tests nav link */
+.nav-tests{color:#e85d3a!important;font-weight:700!important}
+.nav-tests:hover{background:rgba(232,93,58,.12)!important;color:#e85d3a!important}
+@keyframes nav-tests-glow{0%,100%{text-shadow:0 0 0 transparent}50%{text-shadow:0 0 8px rgba(232,93,58,.4)}}
+.nav-tests:not(.active){animation:nav-tests-glow 2s ease-in-out infinite}
+.nav-tests.active{background:linear-gradient(135deg,#e85d3a,#d0742c)!important;color:#fff!important}
 @media(max-width:500px){
   nav .inner{flex-wrap:wrap;gap:.25rem}
   nav .links{order:3;width:100%;justify-content:center}
@@ -1183,7 +1189,7 @@ section[id]>:first-child{margin-top:0}
       <a href="#impacts" data-i18n="nav.impacts">Impacts</a>
       <a href="#pourquoi" data-i18n="nav.analyse">Analyse</a>
       <a href="#dialogue" data-i18n="nav.consultation">Consultation</a>
-      <a href="#tests" data-i18n="nav.tests">Tests</a>
+      <a href="#tests" class="nav-tests" data-i18n="nav.tests">Tests</a>
       <a href="#psychiatre" data-i18n="nav.60s">60s</a>
       <a href="#synthese" data-i18n="nav.synthese">Synthèse</a>
       <a href="#dashboard" data-i18n="nav.dashboard">Scores</a>
