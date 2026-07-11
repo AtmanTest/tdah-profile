@@ -906,14 +906,6 @@ section[id]>:first-child{margin-top:0}
   max-width:var(--max-w);margin:0 auto;
   display:flex;align-items:center;gap:.5rem;
 }
-.news-banner-label{
-  flex-shrink:0;font-weight:700;font-size:.55rem;
-  text-transform:uppercase;letter-spacing:.08em;
-  background:var(--accent-soft);
-  color:var(--accent);
-  padding:.15rem .5rem .2rem;border-radius:6px;white-space:nowrap;
-  border:1px solid rgba(90,127,186,.1);
-}
 .news-banner-ticker{
   flex:1;overflow:hidden;
   display:flex;align-items:center;
@@ -931,7 +923,22 @@ section[id]>:first-child{margin-top:0}
 }
 .news-banner-more:hover{opacity:1;animation:none;font-weight:800}
 
-[data-theme="dark"] .news-banner-label{border-color:rgba(90,127,186,.15)}
+/* News label with orange-blue flashing background */
+.news-banner-label{
+  flex-shrink:0;font-weight:700;font-size:.55rem;
+  text-transform:uppercase;letter-spacing:.08em;
+  white-space:nowrap;
+}
+@keyframes news-label-flash{
+  0%,100%{background:#e85d3a;color:#fff;border-color:rgba(232,93,58,.4);}
+  50%{background:#3b5b8c;color:#fff;border-color:rgba(59,91,140,.4);}
+}
+[data-theme="dark"] .news-banner-label,
+[data-theme="light"] .news-banner-label{
+  animation:news-label-flash 1.6s ease-in-out infinite;
+  background:#e85d3a;color:#fff;padding:.2rem .6rem;
+  border-radius:6px;border:1px solid rgba(232,93,58,.4);
+}
 
 /* Dark mode overrides for test result cards */
 [data-theme="dark"] .caveat{background:#1e1e30;border-color:#2a2a44;color:var(--text)}
@@ -1168,7 +1175,7 @@ section[id]>:first-child{margin-top:0}
 <!-- ===== NEWS BANNER ===== -->
 <div id="news-banner" class="news-banner">
   <div class="inner">
-    <span class="news-banner-label" data-i18n="news.banner.label">📡 Flash TDAH</span>
+    <span class="news-banner-label" data-i18n="news.banner.label">News</span>
     <div class="news-banner-ticker" id="news-ticker">
       <span data-i18n="news.loading">⏳ Chargement des actualités…</span>
     </div>
