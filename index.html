@@ -199,16 +199,15 @@ h2{
 section h2::after{
   content:'';
   position:absolute;
-  inset:-4px -8px;
+  inset:-6px -12px;
   border-radius:10px;
-  background:radial-gradient(ellipse, rgba(30,60,150,.06) 0%, transparent 70%);
+  background:radial-gradient(ellipse, rgba(50,100,200,.25) 0%, transparent 70%);
   pointer-events:none;
   animation:h2-halo 2.5s ease-in-out infinite;
-  z-index:-1;
 }
 @keyframes h2-halo{
-  0%,100%{opacity:.4;transform:scale(1);}
-  50%{opacity:1;transform:scale(1.03);}
+  0%,100%{opacity:.3;transform:scale(1);}
+  50%{opacity:1;transform:scale(1.06);box-shadow:0 0 18px rgba(50,100,200,.3);}
 }
 h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
 p,li{color:var(--text-sec)}
